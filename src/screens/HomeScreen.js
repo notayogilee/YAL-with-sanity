@@ -7,7 +7,7 @@ import Contact from '../components/Contact';
 const HomeScreen = () => {
   return (
     <div>
-      <Navbar style={{ position: 'sticky' }} />
+      <Navbar />
       <Landing />
       <About />
       <Contact />

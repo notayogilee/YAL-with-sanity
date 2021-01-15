@@ -10,8 +10,8 @@ function App() {
       <Router>
         <Switch>
           <Route component={HomeScreen} exact path="/" />
-          <Route component={BlogScreen} exact path="/blog" />
-          <Route component={VideoScreen} exact path="/video" />
+          <Route component={BlogScreen} exact path="/blogs" />
+          <Route component={VideoScreen} exact path="/videos" />
         </Switch>
       </Router>
     </>

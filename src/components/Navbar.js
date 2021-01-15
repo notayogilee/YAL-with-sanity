@@ -2,21 +2,24 @@ import React from 'react';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import {
   Button,
+  IconButton,
   Container,
   Typography
 } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
+import { MoreVert } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height: '70px',
+    height: '8vh',
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     position: 'sticky',
     backgoundColor: '#fff',
-    top: 0
+    top: 0,
+    zIndex: 5
   },
   '> .active': {
     borderBottom: 'solid 1px #333'
@@ -28,42 +31,47 @@ const Navbar = () => {
 
   return (
     <nav className={classes.root}>
-      <Button>
+      <IconButton>
+        <MoreVert />
+      </IconButton>
+      <div>
+        <Button>
+          <Link
+            activeClass="active"
+            to="landing"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >
+            Top
+      </Link>
+        </Button>
         <Link
           activeClass="active"
-          to="landing"
+          to="about"
           spy={true}
           smooth={true}
           offset={-70}
           duration={500}
         >
-          Top
-      </Link>
+          <Button>
+            About
       </Button>
-      <Link
-        activeClass="active"
-        to="about"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-      >
-        <Button>
-          About
+        </Link>
+        <Link
+          activeClass="active"
+          to="contact"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
+          <Button>
+            Contact
       </Button>
-      </Link>
-      <Link
-        activeClass="active"
-        to="contact"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-      >
-        <Button>
-          Contact
-      </Button>
-      </Link>
+        </Link>
+      </div>
     </nav>
   )
 }

@@ -9,7 +9,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: '95vh',
     width: '100%',
     backgroundColor: '#ff7961',
   }

@@ -1,16 +1,12 @@
 import React from 'react';
-import { makeStyles, ThemeProvider, useTheme } from '@material-ui/styles';
+import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {
   Container,
-  Card,
-  Box,
   Paper,
   Grid,
-  CardMedia,
   Typography,
   IconButton,
-  GridListTile,
-  createMuiTheme
+
 } from '@material-ui/core';
 import { SocialIcon } from 'react-social-icons';
 
@@ -29,15 +25,20 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '95vh',
     width: '100%',
-    // position: 'relative',
+    position: 'relative',
     overflow: 'hidden'
   },
   social: {
+    position: 'absolute',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '300px',
-    height: '35%'
+    width: '50%',
+    height: '35%',
+    backgroundColor: '#94b5b1',
+    bottom: 0,
+    right: 0,
+
   },
   icons: {
     display: 'flex',
@@ -45,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     fontSize: '100px',
     margin: 'auto'
+  },
+  contact: {
+    paddingBottom: '200px'
   }
 }))
 
@@ -65,54 +69,57 @@ const Contact = () => {
           <Typography>
             yogialunette@gmail.com
         </Typography>
-          <Paper className={classes.social} xs={12} sm={8} md={6} lg={3}>
-            <Grid container spacing={0}  >
-              <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                <IconButton>
-                  <SocialIcon
-                    url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    style={{ height: 75, width: 75 }}
-                    bgColor='#668582'
-                  />
-                </IconButton>
+          <Container className={classes.contact}>
+            <Paper className={classes.social} xs={12} sm={8} md={6} lg={3}>
+              <Grid container spacing={0}  >
+                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
+                  <IconButton>
+                    <SocialIcon
+                      url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{ height: 75, width: 75 }}
+                      bgColor='#3b5856'
+                    />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
+                  <IconButton>
+                    <SocialIcon
+                      url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{ height: 75, width: 75 }}
+                      bgColor='#3b5856'
+                    />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
+                  <IconButton>
+                    <SocialIcon
+                      url='https://www.instagram.com/yogialunette/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{ height: 75, width: 75 }}
+                      bgColor='#3b5856'
+                    />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
+                  <IconButton>
+                    <SocialIcon
+                      url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{ height: 75, width: 75 }}
+                      bgColor='#3b5856'
+                    />
+                  </IconButton>
+                </Grid>
               </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                <IconButton>
-                  <SocialIcon
-                    url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    style={{ height: 75, width: 75 }}
-                    bgColor='#668582'
-                  />
-                </IconButton>
-              </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                <IconButton>
-                  <SocialIcon
-                    url='https://www.instagram.com/yogialunette/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    style={{ height: 75, width: 75 }}
-                    bgColor='#668582'
-                  />
-                </IconButton>
-              </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                <IconButton>
-                  <SocialIcon
-                    url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    style={{ height: 75, width: 75 }}
-                    bgColor='#668582'
-                  />
-                </IconButton>
-              </Grid>
-            </Grid>
-          </Paper>
+            </Paper>
+          </Container>
+
         </Container>
       </ThemeProvider>
     </>

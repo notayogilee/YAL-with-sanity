@@ -6,8 +6,7 @@ import {
   Container,
   Typography
 } from '@material-ui/core';
-import { makeStyles, useTheme } from '@material-ui/styles';
-import { MoreVert } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 5
   },
-  '> .active': {
+  ' & > .active': {
     borderBottom: 'solid 1px #333'
   }
 }))
@@ -31,47 +30,42 @@ const Navbar = () => {
 
   return (
     <nav className={classes.root}>
-      <IconButton>
-        <MoreVert />
-      </IconButton>
-      <div>
-        <Button>
-          <Link
-            activeClass="active"
-            to="landing"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-          >
-            Top
+      <Button>
+        <Link
+          activeClass="active"
+          to="landing"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
+          Top
       </Link>
-        </Button>
-        <Link
-          activeClass="active"
-          to="about"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          <Button>
-            About
       </Button>
-        </Link>
-        <Link
-          activeClass="active"
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        >
-          <Button>
-            Contact
+      <Link
+        activeClass="active"
+        to="about"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+      >
+        <Button>
+          About
       </Button>
-        </Link>
-      </div>
+      </Link>
+      <Link
+        activeClass="active"
+        to="contact"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+      >
+        <Button>
+          Contact
+      </Button>
+      </Link>
     </nav>
   )
 }

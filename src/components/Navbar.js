@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-evenly',
     position: 'sticky',
     backgoundColor: '#fff',
+    color: '#668582',
     top: 0,
     zIndex: 5
   },
@@ -39,8 +40,14 @@ const Navbar = () => {
           offset={-70}
           duration={500}
         >
-          Top
-      </Link>
+          <Typography
+            variant="h5"
+            style={{ color: '#668582' }}
+          >
+            Top
+        </Typography>
+
+        </Link>
       </Button>
       <Link
         activeClass="active"
@@ -51,8 +58,13 @@ const Navbar = () => {
         duration={500}
       >
         <Button>
-          About
-      </Button>
+          <Typography
+            variant="h5"
+            style={{ color: '#668582' }}
+          >
+            ABOUT
+        </Typography>
+        </Button>
       </Link>
       <Link
         activeClass="active"
@@ -63,8 +75,13 @@ const Navbar = () => {
         duration={500}
       >
         <Button>
-          Contact
-      </Button>
+          <Typography
+            variant="h5"
+            style={{ color: '#668582' }}
+          >
+            contact
+        </Typography>
+        </Button>
       </Link>
     </nav>
   )

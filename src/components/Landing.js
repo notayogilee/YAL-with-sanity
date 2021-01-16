@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {
   Container,
   Paper,
-  Card,
   Typography,
   Zoom,
   Fade,
-  CardMedia
+  Hidden,
+  Grid
 } from '@material-ui/core';
 import video from '../images/Landing.mp4';
+import blog from '../images/bootcamp.jpg';
+import recipe from '../images/dip.jpg';
 
 const theme = createMuiTheme({
   palette: {
@@ -20,12 +22,23 @@ const theme = createMuiTheme({
       dark: '#3b5856',
       contrastText: '#fff'
     }
+  },
+  typography: {
+    h3: {
+      fontSize: '2.4rem',
+      '@media (max-width:600px)': {
+        fontSize: '1rem'
+      }
+    }
   }
+
 })
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     height: '95vh',
     width: '100%',
     position: 'relative',
@@ -55,20 +68,25 @@ const useStyles = makeStyles((theme) => ({
   },
   linkcard: {
     position: 'absolute',
-    width: '48%',
+    width: '100%',
     height: '100%',
-    left: 0
+    left: 0,
   },
   link: {
     display: 'flex',
     height: '29%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    background: '#94b5b1'
   },
-  video: {
-    objectFit: 'cover',
-    height: '100%',
-    width: '100%',
+  // video: {
+  //   objectFit: 'cover',
+  //   height: '100%',
+  //   width: '100%',
+  // },
+  title: {
+    fontFamily: 'Montserrat',
+    color: '#3b5856'
   }
 }))
 
@@ -76,141 +94,119 @@ const Landing = () => {
   const classes = useStyles();
   const active = true
 
-  const [displayLink, setDisplayLink] = useState('title');
-  const [title, setTitle] = useState(true);
-  const [video, setVideo] = useState(false);
-  const [blog, setBlog] = useState(false);
-  const [recipe, setRecipe] = useState(false);
-
+  // const [displayLink, setDisplayLink] = useState('title');
   return (
-    <div>
-      <Container
-        className={classes.root}
-        maxWidth="lg"
-        name="landing"
-      >
-        <Container className={classes.linkcard}>
-          <Link
-            to="/video"
-            onMouseOver={() => {
-              setDisplayLink('video');
-              setVideo(true);
-            }}
-            onMouseOut={() => setDisplayLink('title')}
+    <>
+      <ThemeProvider theme={theme}>
+        <Container
+          className={classes.root}
+          maxWidth="lg"
+          name="landing"
+        >
+          <Container style={{ width: '50%', left: 0 }}
+            className={classes.linkcard}
           >
-            <Paper
-              className={classes.link}
-              style={{ marginBottom: '12px' }}
-              elevation={5}
+            <Link
+              to="/video"
             >
-              <Typography
-                variant="h3"
-                style={{ fontFamily: 'Montserrat' }}
+              <Paper
+                className={classes.link}
+                elevation={5}
+                color="primary"
+                style={{
+                  marginBottom: '12px',
+                }}
               >
-                VIDEOS
-          </Typography>
-            </Paper>
-          </Link>
-          <Link
-            to="/blog"
-            onMouseOver={() => setDisplayLink('blog')}
-            onMouseOut={() => setDisplayLink('title')}
-          >
-            <Paper
-              className={classes.link}
-              style={{ marginBottom: '12px' }}
-              elevation={5}
+                {/* <video className={classes.video} autoPlay muted loop>
+                <source src={video} type="video/mp4" />
+              </video> */}
+                <Typography
+                  variant="h3"
+                  color='#3b5856'
+                  className={classes.title}
+                >
+                  VIDEOS
+              </Typography>
+
+              </Paper>
+            </Link>
+            <Link
+              to="/blog"
             >
-              <Typography
-                variant="h3"
-                style={{ fontFamily: 'Montserrat' }}
+              <Paper
+                className={classes.link}
+                elevation={5}
+                style={{ marginBottom: '12px' }}
+              // style={{
+              //   backgroundImage: `url(${blog})`,
+              //   backgroundSize: 'cover',
+              //   backgroundPosition: 'center',
+              //   marginBottom: '12px',
+              //   backgroundColor: "rgba(0,0,0,0.5)",
+              // }}
               >
-                BLOG
-          </Typography>
-            </Paper>
-          </Link>
-          <Link
-            to="/recipe"
-            onMouseOver={() => setDisplayLink('recipe')}
-            onMouseOut={() => setDisplayLink('title')}
-          >
-            <Paper
-              className={classes.link}
-              elevation={5}
+                <Typography
+                  variant="h3"
+                  className={classes.title}
+                >
+                  BLOG
+                </Typography>
+              </Paper>
+            </Link>
+            <Link
+              to="/recipe"
             >
-              <Typography
-                variant="h3"
-                style={{ fontFamily: 'Montserrat' }}
+              <Paper
+                className={classes.link}
+                elevation={5}
+              // style={{
+              //   backgroundImage: `url(${recipe})`,
+              //   backgroundSize: 'cover',
+              //   backgroundPosition: 'center'
+              // }}
               >
-                RECIPES
-          </Typography>
-            </Paper>
-          </Link>
-        </Container>
-        <Container>
-          <Zoom in={active} timeout={700}>
-            <Paper
-              className={classes.titlecard}
-              elevation={10}
-            >
-              {displayLink === "title" &&
+                <Typography
+                  variant="h3"
+                  className={classes.title}
+                >
+                  RECIPES
+                </Typography>
+              </Paper>
+            </Link>
+          </Container>
+
+          <Hidden mdDown>
+            <Zoom in={active} timeout={700}>
+              <Paper
+                className={classes.titlecard}
+                elevation={5}
+              >
                 <>
                   <Typography
                     variant="h1"
-                    style={{ fontFamily: 'Montserrat' }}
+                    className={classes.title}
                   >
                     YOGI
               </Typography>
                   <Typography
                     variant="h1"
-                    style={{ fontFamily: 'Montserrat' }}
+                    className={classes.title}
                   >
                     A
               </Typography>
                   <Typography
                     variant="h1"
-                    style={{ fontFamily: 'Montserrat' }}
+                    className={classes.title}
                   >
                     LUNETTE
               </Typography>
                 </>
-              }
-              {displayLink === "video" &&
-
-                <Card className={classes.video}>
-                  <CardMedia>
-                    <video autoPlay muted loop>
-                      <source src={video} type="video/mp4" />
-                    </video>
-                  </CardMedia>
-                </Card>
-
-              }
-              {displayLink === "blog" &&
-                <>
-                  <Typography
-                    variant="h1"
-                    style={{ fontFamily: 'Montserrat' }}
-                  >
-                    BLOG
-              </Typography>
-                </>
-              }
-              {displayLink === "recipe" &&
-                <>
-                  <Typography
-                    variant="h1"
-                    style={{ fontFamily: 'Montserrat' }}
-                  >
-                    RECIPE
-              </Typography>
-                </>
-              }
-            </Paper>
-          </Zoom>
+              </Paper>
+            </Zoom>
+          </Hidden>
         </Container>
-      </Container>
-    </div>
+      </ThemeProvider>
+    </>
   )
 }
 

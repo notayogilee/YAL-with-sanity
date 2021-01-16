@@ -3,9 +3,11 @@ import { makeStyles, useTheme } from '@material-ui/styles';
 import {
   Container,
   Card,
+  Paper,
   CardMedia,
   Typography
 } from '@material-ui/core';
+import video from '../images/Landing.mp4';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,9 +27,7 @@ const About = () => {
         maxWidth="lg"
         name="about"
       >
-        <Typography>
-          About
-      </Typography>
+        <h1>Bout</h1>
       </Container>
     </div>
   )

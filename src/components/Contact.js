@@ -6,7 +6,6 @@ import {
   Grid,
   Typography,
   IconButton,
-
 } from '@material-ui/core';
 import { SocialIcon } from 'react-social-icons';
 

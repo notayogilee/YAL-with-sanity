@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-evenly',
     position: 'sticky',
-    backgoundColor: '#fff',
     color: '#668582',
     top: 0,
     zIndex: 5

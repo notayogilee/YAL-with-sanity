@@ -8,24 +8,27 @@ import {
   Zoom,
   Box,
   Fade,
+  Grow,
   Hidden,
   Grid
 } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      light: '#94b5b1',
-      main: '#668582',
-      dark: '#3b5856',
-      contrastText: '#fff'
-    }
+    primary: { main: '#f4f4f4' },
+
   },
   typography: {
     h3: {
       fontSize: '2.4rem',
       '@media (max-width:600px)': {
-        fontSize: '1rem'
+        fontSize: '1.5rem'
+      },
+    },
+    h1: {
+      fontSize: '5rem',
+      '@media (max-width:600px)': {
+        fontSize: '4rem'
       }
     }
   }
@@ -33,44 +36,22 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    height: '95vh',
-    width: '100%',
-    paddingBottom: '4rem',
-    top: 0,
-    '& > *': {
-      margin: theme.spacing(1),
-    }
-  },
-  titlecard: {
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '50vw',
-    height: '60vh',
-    fontFamily: 'Monserrat',
-    // marginBottom: '2rem'
+    height: '95vh',
+    width: '100%',
+    paddingTop: '1rem',
+    textAlign: 'center',
+    overflow: 'hidden'
   },
-  linkcard: {
+  links: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '60vh',
-    width: '100%'
-  },
-  link: {
-    display: 'flex',
-    height: '80%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: '#94b5b1',
-    padding: '1rem'
-  },
-  title: {
-    fontFamily: 'Montserrat',
-    color: '#3b5856'
+    height: '8vh',
+    marginBottom: '10px',
+    background: 'transparent',
   }
 }))
 
@@ -86,102 +67,75 @@ const Landing = () => {
           maxWidth="lg"
           name="landing"
         >
-          <Grid container className={classes.linkcard}
-          >
-            <Grid item xs={12} lg={8}>
-              <Link
-                to="/video"
-              >
+
+          <Container style={{ display: 'flex', alignItems: 'center' }} >
+            <Container>
+              <Grow in={active} timeout={500}>
+                <Typography variant="h1" color="primary" className="text" >
+                  YOGI A LUNETTE
+                </Typography>
+              </Grow>
+            </Container>
+
+            <Hidden xsDown>
+              <Container>
                 <Paper
-                  className={classes.link}
-                  elevation={5}
-                  color="primary"
                   style={{
-                    marginBottom: '12px',
-                  }}
-                >
-
-                  <Typography
-                    variant="h3"
-                    color='#3b5856'
-                    className={classes.title}
-                  >
-                    VIDEOS
-              </Typography>
+                    height: '40vh',
+                    background: '#333'
+                  }}>
 
                 </Paper>
-              </Link>
-            </Grid>
-            <Grid item xs={12} lg={8}>
-              <Link
-                to="/blog"
-              >
+              </Container>
+            </Hidden>
+          </Container>
+
+
+          <Container style={{ display: 'flex' }}>
+            <Hidden xsDown>
+              <Container>
                 <Paper
-                  className={classes.link}
-                  elevation={5}
-                  style={{ marginBottom: '12px' }}
-                >
-                  <Typography
-                    variant="h3"
-                    className={classes.title}
-                  >
-                    BLOG
-                </Typography>
-                </Paper>
-              </Link>
-            </Grid>
-            <Grid item xs={12} lg={8}>
-              <Link
-                to="/recipe"
-              >
-                <Paper
-                  className={classes.link}
-                  elevation={5}
-                >
-                  <Typography
-                    variant="h3"
-                    className={classes.title}
-                  >
-                    RECIPES
-                </Typography>
-                </Paper>
-              </Link>
-            </Grid>
-          </Grid>
+                  style={{
+                    height: '40vh',
+                    background: '#666'
+                  }}>
 
-          <Hidden smDown>
-            <Zoom in={active} timeout={700}>
-              <Grid container className={classes.linkcard}>
-                <Grid item lg={12}>
-                  <Paper
-                    className={classes.titlecard}
-                    elevation={5}
-                  >
-                    <>
-                      <Typography
-                        variant="h1"
-                        className={classes.title}
-                      >
-                        YOGI
-              </Typography>
-                      <Typography
-                        variant="h1"
-                        className={classes.title}
-                      >
-                        A
-              </Typography>
-                      <Typography
-                        variant="h1"
-                        className={classes.title}
-                      >
-                        LUNETTE
-              </Typography>
-                    </>
+                </Paper>
+              </Container>
+            </Hidden>
+
+            <Container style={{ height: '40vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
+              <Link to="/video">
+                <Zoom in={active} timeout={500}>
+                  <Paper elevation={5} className={classes.links}>
+                    <Typography variant="h3">
+                      VIDEOS
+                  </Typography>
                   </Paper>
-                </Grid>
-              </Grid>
-            </Zoom>
-          </Hidden>
+                </Zoom>
+              </Link>
+              <Link to="/blog">
+                <Zoom in={active} timeout={800}>
+                  <Paper elevation={5} className={classes.links}>
+                    <Typography variant="h3">
+                      BLOG
+                    </Typography>
+                  </Paper>
+                </Zoom>
+              </Link>
+              <Link to="/recipe">
+                <Zoom in={active} timeout={500}>
+                  <Paper elevation={5} className={classes.links}>
+                    <Typography variant="h3">
+                      RECIPES
+                    </Typography>
+                  </Paper>
+                </Zoom>
+              </Link>
+            </Container>
+
+          </Container>
+
         </Container>
       </ThemeProvider>
     </>

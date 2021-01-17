@@ -6,13 +6,11 @@ import {
   Paper,
   Typography,
   Zoom,
+  Box,
   Fade,
   Hidden,
   Grid
 } from '@material-ui/core';
-import video from '../images/Landing.mp4';
-import blog from '../images/bootcamp.jpg';
-import recipe from '../images/dip.jpg';
 
 const theme = createMuiTheme({
   palette: {
@@ -31,59 +29,45 @@ const theme = createMuiTheme({
       }
     }
   }
-
 })
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
     height: '95vh',
     width: '100%',
-    position: 'relative',
-    marginBottom: '70px',
+    paddingBottom: '4rem',
     top: 0,
     '& > *': {
       margin: theme.spacing(1),
     }
   },
-  videocard: {
-    position: 'absolute',
-    width: '35%',
-    height: '35%',
-    top: '5%',
-    left: '5%'
-  },
   titlecard: {
-    position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '48%',
-    height: '90%',
-    left: '50%',
-    fontFamily: 'Monserrat'
+    width: '50vw',
+    height: '60vh',
+    fontFamily: 'Monserrat',
+    // marginBottom: '2rem'
   },
   linkcard: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    left: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '60vh',
+    width: '100%'
   },
   link: {
     display: 'flex',
-    height: '29%',
+    height: '80%',
     justifyContent: 'center',
     alignItems: 'center',
-    background: '#94b5b1'
+    background: '#94b5b1',
+    padding: '1rem'
   },
-  // video: {
-  //   objectFit: 'cover',
-  //   height: '100%',
-  //   width: '100%',
-  // },
   title: {
     fontFamily: 'Montserrat',
     color: '#3b5856'
@@ -94,7 +78,6 @@ const Landing = () => {
   const classes = useStyles();
   const active = true
 
-  // const [displayLink, setDisplayLink] = useState('title');
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -103,105 +86,100 @@ const Landing = () => {
           maxWidth="lg"
           name="landing"
         >
-          <Container style={{ width: '50%', left: 0 }}
-            className={classes.linkcard}
+          <Grid container className={classes.linkcard}
           >
-            <Link
-              to="/video"
-            >
-              <Paper
-                className={classes.link}
-                elevation={5}
-                color="primary"
-                style={{
-                  marginBottom: '12px',
-                }}
+            <Grid item xs={12} lg={8}>
+              <Link
+                to="/video"
               >
-                {/* <video className={classes.video} autoPlay muted loop>
-                <source src={video} type="video/mp4" />
-              </video> */}
-                <Typography
-                  variant="h3"
-                  color='#3b5856'
-                  className={classes.title}
+                <Paper
+                  className={classes.link}
+                  elevation={5}
+                  color="primary"
+                  style={{
+                    marginBottom: '12px',
+                  }}
                 >
-                  VIDEOS
+
+                  <Typography
+                    variant="h3"
+                    color='#3b5856'
+                    className={classes.title}
+                  >
+                    VIDEOS
               </Typography>
 
-              </Paper>
-            </Link>
-            <Link
-              to="/blog"
-            >
-              <Paper
-                className={classes.link}
-                elevation={5}
-                style={{ marginBottom: '12px' }}
-              // style={{
-              //   backgroundImage: `url(${blog})`,
-              //   backgroundSize: 'cover',
-              //   backgroundPosition: 'center',
-              //   marginBottom: '12px',
-              //   backgroundColor: "rgba(0,0,0,0.5)",
-              // }}
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item xs={12} lg={8}>
+              <Link
+                to="/blog"
               >
-                <Typography
-                  variant="h3"
-                  className={classes.title}
+                <Paper
+                  className={classes.link}
+                  elevation={5}
+                  style={{ marginBottom: '12px' }}
                 >
-                  BLOG
+                  <Typography
+                    variant="h3"
+                    className={classes.title}
+                  >
+                    BLOG
                 </Typography>
-              </Paper>
-            </Link>
-            <Link
-              to="/recipe"
-            >
-              <Paper
-                className={classes.link}
-                elevation={5}
-              // style={{
-              //   backgroundImage: `url(${recipe})`,
-              //   backgroundSize: 'cover',
-              //   backgroundPosition: 'center'
-              // }}
+                </Paper>
+              </Link>
+            </Grid>
+            <Grid item xs={12} lg={8}>
+              <Link
+                to="/recipe"
               >
-                <Typography
-                  variant="h3"
-                  className={classes.title}
+                <Paper
+                  className={classes.link}
+                  elevation={5}
                 >
-                  RECIPES
+                  <Typography
+                    variant="h3"
+                    className={classes.title}
+                  >
+                    RECIPES
                 </Typography>
-              </Paper>
-            </Link>
-          </Container>
+                </Paper>
+              </Link>
+            </Grid>
+          </Grid>
 
-          <Hidden mdDown>
+          <Hidden smDown>
             <Zoom in={active} timeout={700}>
-              <Paper
-                className={classes.titlecard}
-                elevation={5}
-              >
-                <>
-                  <Typography
-                    variant="h1"
-                    className={classes.title}
+              <Grid container className={classes.linkcard}>
+                <Grid item lg={12}>
+                  <Paper
+                    className={classes.titlecard}
+                    elevation={5}
                   >
-                    YOGI
+                    <>
+                      <Typography
+                        variant="h1"
+                        className={classes.title}
+                      >
+                        YOGI
               </Typography>
-                  <Typography
-                    variant="h1"
-                    className={classes.title}
-                  >
-                    A
+                      <Typography
+                        variant="h1"
+                        className={classes.title}
+                      >
+                        A
               </Typography>
-                  <Typography
-                    variant="h1"
-                    className={classes.title}
-                  >
-                    LUNETTE
+                      <Typography
+                        variant="h1"
+                        className={classes.title}
+                      >
+                        LUNETTE
               </Typography>
-                </>
-              </Paper>
+                    </>
+                  </Paper>
+                </Grid>
+              </Grid>
             </Zoom>
           </Hidden>
         </Container>

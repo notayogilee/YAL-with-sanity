@@ -7,7 +7,7 @@ import {
   CardMedia,
   Typography
 } from '@material-ui/core';
-import video from '../images/Landing.mp4';
+// import video from '../images/Landing.mp4';
 
 const useStyles = makeStyles((theme) => ({
   root: {

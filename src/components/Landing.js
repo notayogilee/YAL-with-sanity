@@ -36,7 +36,6 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     height: '95vh',
@@ -49,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '8vh',
+    height: '10vh',
     marginBottom: '10px',
     background: 'transparent',
   }
@@ -68,16 +67,16 @@ const Landing = () => {
           name="landing"
         >
 
-          <Container style={{ display: 'flex', alignItems: 'center' }} >
+          <Container style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} >
             <Container>
-              <Grow in={active} timeout={500}>
-                <Typography variant="h1" color="primary" className="text" >
+              <Fade in={active} timeout={2500}>
+                <Typography variant="h1" className="text" style={{ color: '#f4f4f4' }}>
                   YOGI A LUNETTE
                 </Typography>
-              </Grow>
+              </Fade>
             </Container>
 
-            <Hidden xsDown>
+            <Hidden smDown>
               <Container>
                 <Paper
                   style={{
@@ -91,12 +90,12 @@ const Landing = () => {
           </Container>
 
 
-          <Container style={{ display: 'flex' }}>
+          <Container style={{ display: 'flex', justifyContent: 'center', minHeight: '100%' }}>
             <Hidden xsDown>
               <Container>
                 <Paper
                   style={{
-                    height: '40vh',
+                    minHeight: '40vh',
                     background: '#666'
                   }}>
 
@@ -104,7 +103,14 @@ const Landing = () => {
               </Container>
             </Hidden>
 
-            <Container style={{ height: '40vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
+            <Container
+              style={{
+                height: '40vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-evenly'
+              }} >
+
               <Link to="/video">
                 <Zoom in={active} timeout={500}>
                   <Paper elevation={5} className={classes.links}>
@@ -132,6 +138,7 @@ const Landing = () => {
                   </Paper>
                 </Zoom>
               </Link>
+
             </Container>
 
           </Container>

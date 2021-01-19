@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {
   Container,
   Paper,
+  Button,
+  FormControl,
+  InputLabel,
+  Input,
+  TextareaAutosize,
   Grid,
   Typography,
   IconButton,
@@ -22,10 +27,27 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '95vh',
+    display: 'flex',
+    flexDirection: 'column',
+    height: '101vh',
     width: '100%',
     position: 'relative',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    top: 70,
+    marginBottom: '4rem'
+  },
+  message: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '50%',
+    width: '100%',
+    padding: '2rem'
   },
   social: {
     position: 'absolute',
@@ -35,8 +57,8 @@ const useStyles = makeStyles((theme) => ({
     width: '50%',
     height: '35%',
     backgroundColor: '#94b5b1',
-    bottom: 0,
-    right: 0,
+    // bottom: 0,
+    // right: 0,
 
   },
   icons: {
@@ -57,6 +79,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Contact = () => {
   const classes = useStyles();
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -65,10 +93,49 @@ const Contact = () => {
           maxWidth="lg"
           name="contact"
         >
-          <Typography>
+          <Typography variant="h3" component="div">
             yogialunette@gmail.com
         </Typography>
-          <Container className={classes.contact}>
+
+          <Paper className={classes.message} style={{ width: '70%' }}>
+            <Typography
+              variant="h4"
+              style={{
+                textAlign: 'center',
+                justifyContent: 'center'
+              }}>
+              Send Me A Message!
+          </Typography>
+            <form autoComplete="off">
+              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
+                <InputLabel htmlFor="name">Name</InputLabel>
+                <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+              </FormControl>
+              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
+                <InputLabel htmlFor="email">Email</InputLabel>
+                <Input id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              </FormControl>
+              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
+                <InputLabel htmlFor="subject">Subject</InputLabel>
+                <Input id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
+              </FormControl>
+              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
+                <InputLabel htmlFor="message">Message</InputLabel>
+                <TextareaAutosize
+                  id="message"
+                  rowsMin={5}
+                  style={{
+                    resize: "none"
+                  }}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+              </FormControl>
+              <Button type="submit" style={{ display: 'block', margin: 'auto' }} variant="contained" color="primary">Send</Button>
+            </form>
+          </Paper>
+
+          {/* <Container className={classes.contact}>
             <Paper className={classes.social} xs={12} sm={8} md={6} lg={3}>
               <Grid container spacing={0}  >
                 <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
@@ -117,7 +184,7 @@ const Contact = () => {
                 </Grid>
               </Grid>
             </Paper>
-          </Container>
+          </Container> */}
 
         </Container>
       </ThemeProvider>

@@ -11,8 +11,9 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '95vh',
+    height: '92.5vh',
     width: '100%',
+    paddingBottom: '2rem',
     backgroundColor: '#ff7961',
   }
 }))

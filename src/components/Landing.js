@@ -102,8 +102,7 @@ const Landing = () => {
                   <Box
                     style={{
                       height: '40vh',
-                      width: '100%',
-                      // background: `url(${video}) cover center/cover`
+                      width: '100%'
                     }}>
                     <video style={{ objectFit: 'cover', height: '40vh', width: '100%' }} autoPlay muted loop>
                       <source src={video} type="video/mp4" />

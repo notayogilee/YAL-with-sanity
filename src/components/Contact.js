@@ -7,8 +7,8 @@ import {
   FormControl,
   InputLabel,
   Input,
-  TextareaAutosize,
-  Grid,
+  TextField,
+  Box,
   Typography,
   IconButton,
 } from '@material-ui/core';
@@ -16,11 +16,20 @@ import { SocialIcon } from 'react-social-icons';
 
 const theme = createMuiTheme({
   palette: {
-    primary: {
-      light: '#94b5b1',
-      main: '#668582',
-      dark: '#3b5856',
-      contrastText: '#fff'
+    primary: { main: '#668582' }
+  },
+  typography: {
+    h3: {
+      fontSize: '2.4rem',
+      '@media (max-width:600px)': {
+        fontSize: '1.5rem'
+      },
+    },
+    h1: {
+      fontSize: '5rem',
+      '@media (max-width:600px)': {
+        fontSize: '4rem'
+      }
     }
   }
 })
@@ -29,53 +38,30 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    height: '101vh',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '100vh',
     width: '100%',
-    position: 'relative',
     overflow: 'hidden',
     top: 70,
-    marginBottom: '4rem'
+    padding: '3rem 0.25rem',
   },
   message: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '50%',
-    width: '100%',
-    padding: '2rem'
+    height: '50vh',
+    width: '100%'
   },
   social: {
-    position: 'absolute',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '50%',
-    height: '35%',
-    backgroundColor: '#94b5b1',
-    // bottom: 0,
-    // right: 0,
-
-  },
-  icons: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: '100px',
-    margin: 'auto'
-  },
-  contact: {
-    paddingBottom: '200px'
+    width: '100%',
+    height: '10vh',
   }
 }))
-
-// social icons
-// contact form 
-// email
 
 const Contact = () => {
   const classes = useStyles();
@@ -93,98 +79,114 @@ const Contact = () => {
           maxWidth="lg"
           name="contact"
         >
-          <Typography variant="h3" component="div">
-            yogialunette@gmail.com
-        </Typography>
-
-          <Paper className={classes.message} style={{ width: '70%' }}>
+          <Container >
             <Typography
-              variant="h4"
+              variant="h3"
+              color="primary"
               style={{
-                textAlign: 'center',
-                justifyContent: 'center'
-              }}>
-              Send Me A Message!
-          </Typography>
-            <form autoComplete="off">
-              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
-                <InputLabel htmlFor="name">Name</InputLabel>
-                <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
-              </FormControl>
-              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
-                <InputLabel htmlFor="email">Email</InputLabel>
-                <Input id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              </FormControl>
-              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
-                <InputLabel htmlFor="subject">Subject</InputLabel>
-                <Input id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
-              </FormControl>
-              <FormControl fullWidth="true" style={{ marginBottom: '1rem' }}>
-                <InputLabel htmlFor="message">Message</InputLabel>
-                <TextareaAutosize
-                  id="message"
-                  rowsMin={5}
-                  style={{
-                    resize: "none"
-                  }}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-              </FormControl>
-              <Button type="submit" style={{ display: 'block', margin: 'auto' }} variant="contained" color="primary">Send</Button>
-            </form>
-          </Paper>
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '10vh',
+                fontFamily: 'Raleway'
+              }}
+            >
+              YOGIALUNETTE@GMAIL.COM
+            </Typography>
+          </Container>
 
-          {/* <Container className={classes.contact}>
-            <Paper className={classes.social} xs={12} sm={8} md={6} lg={3}>
-              <Grid container spacing={0}  >
-                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                  <IconButton>
-                    <SocialIcon
-                      url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      style={{ height: 75, width: 75 }}
-                      bgColor='#3b5856'
-                    />
-                  </IconButton>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                  <IconButton>
-                    <SocialIcon
-                      url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      style={{ height: 75, width: 75 }}
-                      bgColor='#3b5856'
-                    />
-                  </IconButton>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                  <IconButton>
-                    <SocialIcon
-                      url='https://www.instagram.com/yogialunette/'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      style={{ height: 75, width: 75 }}
-                      bgColor='#3b5856'
-                    />
-                  </IconButton>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6} lg={6} className={classes.icons}>
-                  <IconButton>
-                    <SocialIcon
-                      url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      style={{ height: 75, width: 75 }}
-                      bgColor='#3b5856'
-                    />
-                  </IconButton>
-                </Grid>
-              </Grid>
+          <Container className={classes.social}>
+            <Box>
+              <IconButton>
+                <SocialIcon
+                  url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{ height: 40, width: 40 }}
+                  bgColor='#668582'
+                />
+              </IconButton>
+              <IconButton>
+                <SocialIcon
+                  url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{ height: 40, width: 40 }}
+                  bgColor='#668582'
+                />
+              </IconButton>
+              <IconButton>
+                <SocialIcon
+                  url='https://www.instagram.com/yogialunette/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{ height: 40, width: 40 }}
+                  bgColor='#668582'
+                />
+              </IconButton>
+              <IconButton>
+                <SocialIcon
+                  url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{ height: 40, width: 40 }}
+                  bgColor='#668582'
+                />
+              </IconButton>
+              <IconButton>
+                <SocialIcon
+                  url='https://www.twitch.tv/yogialunette'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{ height: 40, width: 40 }}
+                  bgColor='#668582'
+                />
+              </IconButton>
+            </Box>
+          </Container>
+
+          <Container maxWidth="md" className={classes.message}>
+            <Paper style={{ padding: '1rem' }} elevation={5}>
+
+              <form autoComplete="off">
+                <FormControl fullWidth={true} style={{ marginBottom: '0.25rem' }}>
+                  <InputLabel htmlFor="name">Name</InputLabel>
+                  <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                </FormControl>
+                <FormControl fullWidth={true} style={{ marginBottom: '0.25rem' }}>
+                  <InputLabel htmlFor="email">Email</InputLabel>
+                  <Input id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </FormControl>
+                <FormControl fullWidth={true} style={{ marginBottom: '0.25rem' }}>
+                  <InputLabel htmlFor="subject">Subject</InputLabel>
+                  <Input id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
+                </FormControl>
+                <FormControl fullWidth={true} style={{ marginBottom: '0.5rem' }}>
+                  <TextField
+                    id="message"
+                    multiline
+                    label="message"
+                    style={{
+                      resize: "none",
+                      marginBottom: '0.25rem'
+                    }}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                </FormControl>
+                <Button
+                  type="submit"
+                  style={{ display: 'block', margin: 'auto' }}
+                  variant="contained"
+                  color="primary"
+                >
+                  Send
+                </Button>
+              </form>
             </Paper>
-          </Container> */}
+          </Container>
+
+
 
         </Container>
       </ThemeProvider>

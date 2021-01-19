@@ -41,7 +41,7 @@ const Navbar = () => {
         >
           <Typography
             variant="h5"
-            style={{ color: '#668582' }}
+            style={{ color: "#3b5856" }}
           >
             Top
         </Typography>
@@ -59,7 +59,7 @@ const Navbar = () => {
         <Button>
           <Typography
             variant="h5"
-            style={{ color: '#668582' }}
+            style={{ color: "#3b5856" }}
           >
             ABOUT
         </Typography>
@@ -70,13 +70,13 @@ const Navbar = () => {
         to="contact"
         spy={true}
         smooth={true}
-        offset={-70}
+        // offset={-20}
         duration={500}
       >
         <Button>
           <Typography
             variant="h5"
-            style={{ color: '#668582' }}
+            style={{ color: "#3b5856" }}
           >
             contact
         </Typography>

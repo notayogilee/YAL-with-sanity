@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'sticky',
     color: '#668582',
     top: 0,
-    zIndex: 5
+    zIndex: 5,
+    background: 'rgba(138,172,168,0.3)'
   },
   ' & > .active': {
     borderBottom: 'solid 1px #333'

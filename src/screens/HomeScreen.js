@@ -5,13 +5,9 @@ import About from '../components/About';
 import Contact from '../components/Contact';
 
 const HomeScreen = () => {
-  const [scrollPosition, setScrollPosition] = useState(window.scrollY)
 
-
-
-  console.log(scrollPosition)
   return (
-    <div>
+    <div >
       <Navbar />
       <Landing />
       <About />

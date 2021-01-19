@@ -11,6 +11,7 @@ import {
   Box,
   Typography,
   IconButton,
+  Hidden
 } from '@material-ui/core';
 import { SocialIcon } from 'react-social-icons';
 
@@ -22,7 +23,7 @@ const theme = createMuiTheme({
     h3: {
       fontSize: '2.4rem',
       '@media (max-width:600px)': {
-        fontSize: '1.5rem'
+        fontSize: '1.3rem'
       },
     },
     h1: {
@@ -94,56 +95,110 @@ const Contact = () => {
               YOGIALUNETTE@GMAIL.COM
             </Typography>
           </Container>
+          <Hidden smUp>
+            <Container className={classes.social}>
+              <Box>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 30, width: 30 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 30, width: 30 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.instagram.com/yogialunette/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 30, width: 30 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 30, width: 30 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.twitch.tv/yogialunette'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 30, width: 30 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+              </Box>
+            </Container>
+          </Hidden>
 
-          <Container className={classes.social}>
-            <Box>
-              <IconButton>
-                <SocialIcon
-                  url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  style={{ height: 40, width: 40 }}
-                  bgColor='#668582'
-                />
-              </IconButton>
-              <IconButton>
-                <SocialIcon
-                  url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  style={{ height: 40, width: 40 }}
-                  bgColor='#668582'
-                />
-              </IconButton>
-              <IconButton>
-                <SocialIcon
-                  url='https://www.instagram.com/yogialunette/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  style={{ height: 40, width: 40 }}
-                  bgColor='#668582'
-                />
-              </IconButton>
-              <IconButton>
-                <SocialIcon
-                  url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  style={{ height: 40, width: 40 }}
-                  bgColor='#668582'
-                />
-              </IconButton>
-              <IconButton>
-                <SocialIcon
-                  url='https://www.twitch.tv/yogialunette'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  style={{ height: 40, width: 40 }}
-                  bgColor='#668582'
-                />
-              </IconButton>
-            </Box>
-          </Container>
+          <Hidden xsDown>
+            <Container className={classes.social}>
+              <Box>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 80, width: 80 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 80, width: 80 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.instagram.com/yogialunette/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 80, width: 80 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 80, width: 80 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://www.twitch.tv/yogialunette'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 80, width: 80 }}
+                    bgColor='#668582'
+                  />
+                </IconButton>
+              </Box>
+            </Container>
+          </Hidden>
+
 
           <Container maxWidth="md" className={classes.message}>
             <Paper style={{ padding: '1rem' }} elevation={5}>

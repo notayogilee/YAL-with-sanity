@@ -7,10 +7,8 @@ import {
   Typography,
   Zoom,
   Box,
-  Fade,
-  Grow,
-  Hidden,
-  Slide
+  Slide,
+  Hidden
 } from '@material-ui/core';
 import video from '../images/video.mp4';
 
@@ -60,7 +58,7 @@ const Landing = () => {
   const active = true
 
   return (
-    <>
+    <div>
       <ThemeProvider theme={theme}>
         <Container
           className={classes.root}
@@ -70,11 +68,11 @@ const Landing = () => {
 
           <Container style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '50%' }} >
             <Container>
-              <Fade in={active} timeout={1500}>
+              <Slide in={active} timeout={1500}>
                 <Typography variant="h1" className="text" style={{ color: '#f4f4f4' }}>
                   YOGI A LUNETTE
                 </Typography>
-              </Fade>
+              </Slide>
             </Container>
 
             <Hidden smDown>
@@ -123,7 +121,7 @@ const Landing = () => {
 
               <Link to="/video">
                 <Zoom in={active} timeout={500}>
-                  <Box boxShadow={10} className={classes.links}>
+                  <Box boxShadow={5} className={classes.links}>
                     <Typography variant="h3" color="primary">
                       VIDEOS
                   </Typography>
@@ -132,7 +130,7 @@ const Landing = () => {
               </Link>
               <Link to="/blog">
                 <Zoom in={active} timeout={800}>
-                  <Box boxShadow={10} className={classes.links}>
+                  <Box boxShadow={5} className={classes.links}>
                     <Typography variant="h3" color="primary">
                       BLOG
                     </Typography>
@@ -141,7 +139,7 @@ const Landing = () => {
               </Link>
               <Link to="/recipe">
                 <Zoom in={active} timeout={1000}>
-                  <Box boxShadow={10} className={classes.links}>
+                  <Box boxShadow={5} className={classes.links}>
                     <Typography variant="h3" color="primary">
                       RECIPES
                     </Typography>
@@ -155,7 +153,7 @@ const Landing = () => {
 
         </Container>
       </ThemeProvider>
-    </>
+    </div>
   )
 }
 

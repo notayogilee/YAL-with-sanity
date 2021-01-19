@@ -70,7 +70,6 @@ const Navbar = () => {
         to="contact"
         spy={true}
         smooth={true}
-        // offset={-20}
         duration={500}
       >
         <Button>

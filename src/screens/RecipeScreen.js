@@ -1,4 +1,5 @@
 import React from 'react';
+import sanityClient from '../client';
 
 const RecipeScreen = () => {
   return (

@@ -119,33 +119,33 @@ const Landing = () => {
                 justifyContent: 'space-between'
               }} >
 
+              {/* <Zoom in={active} timeout={500}> */}
               <Link to="/video">
-                <Zoom in={active} timeout={500}>
-                  <Box boxShadow={5} className={classes.links}>
-                    <Typography variant="h3" color="primary">
-                      VIDEOS
+                <Box boxShadow={5} className={classes.links}>
+                  <Typography variant="h3" color="primary">
+                    VIDEOS
                   </Typography>
-                  </Box>
-                </Zoom>
+                </Box>
               </Link>
+              {/* </Zoom> */}
+              {/* <Zoom in={active} timeout={800}> */}
               <Link to="/blog">
-                <Zoom in={active} timeout={800}>
-                  <Box boxShadow={5} className={classes.links}>
-                    <Typography variant="h3" color="primary">
-                      BLOG
+                <Box boxShadow={5} className={classes.links}>
+                  <Typography variant="h3" color="primary">
+                    BLOG
                     </Typography>
-                  </Box>
-                </Zoom>
+                </Box>
               </Link>
+              {/* </Zoom> */}
+              {/* <Zoom in={active} timeout={1000}> */}
               <Link to="/recipe">
-                <Zoom in={active} timeout={1000}>
-                  <Box boxShadow={5} className={classes.links}>
-                    <Typography variant="h3" color="primary">
-                      RECIPES
+                <Box boxShadow={5} className={classes.links}>
+                  <Typography variant="h3" color="primary">
+                    RECIPES
                     </Typography>
-                  </Box>
-                </Zoom>
+                </Box>
               </Link>
+              {/* </Zoom> */}
 
             </Container>
 

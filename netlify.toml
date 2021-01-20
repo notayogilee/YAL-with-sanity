@@ -4,7 +4,7 @@
   status = 200
 
 [build]
-publish="/build"
+publish="build"
 command = "npm run build"
 functions = "/functions"
   

@@ -17,7 +17,12 @@ import { SocialIcon } from 'react-social-icons';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#668582' }
+    primary: {
+      main: '#8aaca8',
+      light: '#baded9',
+      dark: '#5c7d79'
+    },
+    secondary: { main: '#f4f4f4' }
   },
   typography: {
     h3: {
@@ -39,9 +44,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    height: '100vh',
+    height: 'auto',
+    minHeight: '100vh',
     width: '100%',
     overflow: 'hidden',
     top: 70,
@@ -52,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '50vh',
+    height: '50%',
     width: '100%'
   },
   social: {
@@ -60,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: '10vh',
+    height: '10%',
   }
 }))
 
@@ -98,51 +104,51 @@ const Contact = () => {
           <Hidden smUp>
             <Container className={classes.social}>
               <Box>
-                <IconButton>
+                <IconButton style={{ padding: '6px' }}>
                   <SocialIcon
                     url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    style={{ height: 30, width: 30 }}
-                    bgColor='#668582'
+                    style={{ height: 42, width: 42 }}
+                    bgColor='#8aaca8'
                   />
                 </IconButton>
-                <IconButton>
+                <Button style={{ padding: '6px' }}>
                   <SocialIcon
                     url='https://www.youtube.com/channel/UC9u2sGj3VZpR0KAGCF_BvUw'
                     target='_blank'
                     rel='noopener noreferrer'
-                    style={{ height: 30, width: 30 }}
-                    bgColor='#668582'
+                    style={{ height: 42, width: 42 }}
+                    bgColor='#8aaca8'
                   />
-                </IconButton>
-                <IconButton>
+                </Button>
+                <Button style={{ padding: '6px' }}>
                   <SocialIcon
                     url='https://www.instagram.com/yogialunette/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    style={{ height: 30, width: 30 }}
-                    bgColor='#668582'
+                    style={{ height: 42, width: 42 }}
+                    bgColor='#8aaca8'
                   />
-                </IconButton>
-                <IconButton>
+                </Button>
+                <Button style={{ padding: '6px' }}>
                   <SocialIcon
                     url='https://www.linkedin.com/in/claudia-viens-8233b1aa/'
                     target='_blank'
                     rel='noopener noreferrer'
-                    style={{ height: 30, width: 30 }}
-                    bgColor='#668582'
+                    style={{ height: 42, width: 42 }}
+                    bgColor='#8aaca8'
                   />
-                </IconButton>
-                <IconButton>
+                </Button>
+                <Button style={{ padding: '6px' }}>
                   <SocialIcon
                     url='https://www.twitch.tv/yogialunette'
                     target='_blank'
                     rel='noopener noreferrer'
-                    style={{ height: 30, width: 30 }}
-                    bgColor='#668582'
+                    style={{ height: 42, width: 42 }}
+                    bgColor='#8aaca8'
                   />
-                </IconButton>
+                </Button>
               </Box>
             </Container>
           </Hidden>
@@ -156,7 +162,7 @@ const Contact = () => {
                     target='_blank'
                     rel='noopener noreferrer'
                     style={{ height: 80, width: 80 }}
-                    bgColor='#668582'
+                    bgColor='#8aaca8'
                   />
                 </IconButton>
                 <IconButton>
@@ -165,7 +171,7 @@ const Contact = () => {
                     target='_blank'
                     rel='noopener noreferrer'
                     style={{ height: 80, width: 80 }}
-                    bgColor='#668582'
+                    bgColor='#8aaca8'
                   />
                 </IconButton>
                 <IconButton>
@@ -174,7 +180,7 @@ const Contact = () => {
                     target='_blank'
                     rel='noopener noreferrer'
                     style={{ height: 80, width: 80 }}
-                    bgColor='#668582'
+                    bgColor='#8aaca8'
                   />
                 </IconButton>
                 <IconButton>
@@ -183,7 +189,7 @@ const Contact = () => {
                     target='_blank'
                     rel='noopener noreferrer'
                     style={{ height: 80, width: 80 }}
-                    bgColor='#668582'
+                    bgColor='#8aaca8'
                   />
                 </IconButton>
                 <IconButton>
@@ -192,13 +198,12 @@ const Contact = () => {
                     target='_blank'
                     rel='noopener noreferrer'
                     style={{ height: 80, width: 80 }}
-                    bgColor='#668582'
+                    bgColor='#8aaca8'
                   />
                 </IconButton>
               </Box>
             </Container>
           </Hidden>
-
 
           <Container maxWidth="md" className={classes.message}>
             <Paper style={{ padding: '1rem' }} elevation={5}>
@@ -235,13 +240,14 @@ const Contact = () => {
                   variant="contained"
                   color="primary"
                 >
-                  Send
+                  <Typography
+                    color='secondary'
+
+                  > Send</Typography>
                 </Button>
               </form>
             </Paper>
           </Container>
-
-
 
         </Container>
       </ThemeProvider>

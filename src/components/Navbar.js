@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 5,
     background: 'rgba(138,172,168,0.3)'
-  },
-  ' & > .active': {
-    borderBottom: 'solid 1px #333'
   }
 }))
 
@@ -42,7 +39,10 @@ const Navbar = () => {
         >
           <Typography
             variant="h5"
-            style={{ color: "#3b5856" }}
+            style={{
+              color: "#3b5856",
+
+            }}
           >
             Top
         </Typography>

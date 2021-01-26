@@ -14,8 +14,11 @@ import video from '../images/video.mp4';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#8AACA8' },
-
+    primary: {
+      main: '#8aaca8',
+      light: '#baded9',
+      dark: '#5c7d79'
+    },
   },
   typography: {
     h3: {
@@ -37,7 +40,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    height: '92.5vh',
+    justifyContent: 'space-evenly',
+    height: 'auto',
+    minHeight: '92.5vh',
     width: '100%',
     paddingBottom: '2rem',
     textAlign: 'center',
@@ -48,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     height: '10vh',
+    minHeight: '10%',
     marginBottom: '10px',
     background: 'transparent',
   }
@@ -75,7 +81,7 @@ const Landing = () => {
               </Slide>
             </Container>
 
-            <Hidden smDown>
+            {/* <Hidden smDown>
               <Slide in={active} direction="left" timeout={500}>
                 <Container>
                   <Paper
@@ -90,7 +96,7 @@ const Landing = () => {
                   </Paper>
                 </Container>
               </Slide>
-            </Hidden>
+            </Hidden> */}
           </Container>
 
           <Container style={{ display: 'flex', justifyContent: 'center', minHeight: '50%' }}>

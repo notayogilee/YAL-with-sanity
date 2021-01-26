@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 5,
     background: 'rgba(138,172,168,0.3)'
-  }
+  },
+
 }))
 
 const Navbar = () => {

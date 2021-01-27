@@ -4,10 +4,11 @@ import HomeScreen from './screens/HomeScreen';
 import BlogScreen from './screens/BlogScreen';
 import VideoScreen from './screens/VideoScreen';
 import RecipeScreen from './screens/RecipeScreen';
+import VideoState from './context/videos/VideoState';
 
 function App() {
   return (
-    <>
+    <VideoState>
       <Router>
         <Switch>
           <Route component={HomeScreen} exact path="/" />
@@ -16,7 +17,7 @@ function App() {
           <Route component={RecipeScreen} exact path="/recipe" />
         </Switch>
       </Router>
-    </>
+    </VideoState>
   );
 }
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useEffect } from 'react';
+import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
 import {
   Container,
@@ -26,15 +26,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const VideoScreen = () => {
-  const classes = useStyles();
-
-  const [videos, setVideos] = useState({})
+  const videoContext = useContext(VideoContext);
 
   useEffect(() => {
-    axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=UC9u2sGj3VZpR0KAGCF_BvUw&part=snippet&maxResults=10`)
-      .then(res => setVideos(res.data))
-      .catch(error => console.error(`ERROR: ${error}`))
+    videoContext.loadVideos();
   }, [])
+
+  const videos = videoContext.videos
+  const classes = useStyles();
 
   console.log(videos)
 
@@ -43,6 +42,7 @@ const VideoScreen = () => {
       maxWidth='lg'
       className={classes.root}
     >
+      <h1>Videos</h1>
       <ul>
         {videos.items && videos.items.map(video => (
           <li key={video.id.videoId}

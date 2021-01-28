@@ -1,4 +1,5 @@
 export const LOAD_VIDEOS = 'LOAD_VIDEOS';
+export const GET_SINGLE_VIDEO_DETAILS = 'GET_SINGLE_VIDEO_DETAILS';
 export const SET_LOADING = 'SET_LOADING';
 
 export const LOAD_BLOG_POSTS = 'LOAD_BLOG_POSTS';

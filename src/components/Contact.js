@@ -149,6 +149,15 @@ const Contact = () => {
                     bgColor='#8aaca8'
                   />
                 </Button>
+                <Button style={{ padding: '6px' }}>
+                  <SocialIcon
+                    url='https://open.spotify.com/user/ct8g7uxyny4fsgoe0m1qwy5re'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 42, width: 42 }}
+                    bgColor='#8aaca8'
+                  />
+                </Button>
               </Box>
             </Container>
           </Hidden>
@@ -195,6 +204,15 @@ const Contact = () => {
                 <IconButton>
                   <SocialIcon
                     url='https://www.twitch.tv/yogialunette'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    style={{ height: 80, width: 80 }}
+                    bgColor='#8aaca8'
+                  />
+                </IconButton>
+                <IconButton>
+                  <SocialIcon
+                    url='https://open.spotify.com/user/ct8g7uxyny4fsgoe0m1qwy5re'
                     target='_blank'
                     rel='noopener noreferrer'
                     style={{ height: 80, width: 80 }}

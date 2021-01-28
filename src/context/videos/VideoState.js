@@ -4,7 +4,8 @@ import VideoContext from './videoContext';
 import VideoReducer from './videoReducer';
 import {
   SET_LOADING,
-  LOAD_VIDEOS
+  LOAD_VIDEOS,
+  GET_SINGLE_VIDEO_DETAILS
 } from '../types';
 
 const VideoState = (props) => {
@@ -15,6 +16,7 @@ const VideoState = (props) => {
 
   const [state, dispatch] = useReducer(VideoReducer, initialState);
 
+  // load all videos from youtube API
   const loadVideos = async () => {
     setLoading();
 
@@ -24,7 +26,7 @@ const VideoState = (props) => {
       type: LOAD_VIDEOS,
       payload: res.data
     });
-  }
+  };
 
   // Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING })

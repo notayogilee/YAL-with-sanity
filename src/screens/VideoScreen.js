@@ -5,6 +5,9 @@ import {
   Container,
   Box,
   Card,
+  Grid,
+  Button,
+  Slide,
   Typography
 } from '@material-ui/core';
 import {
@@ -14,53 +17,52 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: 'auto',
-    minHeight: '100vh',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    flexBasis: '33.3333333%'
+    flexGrow: 1,
+    padding: '2rem',
+    alignItems: 'center'
   }
 }))
 
 const VideoScreen = () => {
   const videoContext = useContext(VideoContext);
 
+  // add if-statement to reduce API calls on refresh or page navigation
   useEffect(() => {
-    videoContext.loadVideos();
+    if (!videos.items) {
+      videoContext.loadVideos();
+    }
   }, [])
 
   const videos = videoContext.videos
   const classes = useStyles();
-
-  console.log(videos)
+  if (videos.items) {
+    console.log(videos.items)
+  }
 
   return (
-    <Container
-      maxWidth='lg'
-      className={classes.root}
-    >
-      <h1>Videos</h1>
-      <ul>
-        {videos.items && videos.items.map(video => (
-          <li key={video.id.videoId}
-          >
-            <Box>
-              <ReactPlayer
-                controls
-                width="100%"
-                height="100%"
-                url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
-              />
-            </Box>
+    <div className={classes.root}>
+      {/* <h1>Videos</h1> */}
 
-          </li>
-        ))}
-      </ul>
-
-    </Container>
+      <Grid container spacing={6}>
+        {videos.items && videos.items.map((video) => {
+          // api returns playlists as well. I just want videos with videoId
+          return (video.id.videoId &&
+            <Grid item xs={4}>
+              <Card key={video.etag} style={{ padding: '8px' }}>
+                <ReactPlayer
+                  controls
+                  width="560px"
+                  height="315px"
+                  url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                />
+                <Button>More Info</Button>
+              </Card>
+            </Grid>
+          )
+        })
+        }
+      </Grid>
+    </div>
   )
 }
 

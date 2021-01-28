@@ -55,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)'
   },
   media: {
-    height: 'auto',
-    width: 'auto',
+    height: '100%',
+    width: '100%',
     maxWidth: '560px',
     maxHeight: '315px',
     background: '#8aaca8'
@@ -125,8 +125,8 @@ const VideoScreen = () => {
 
                           <ReactPlayer
                             controls
-                            width="426px"
-                            height="240px"
+                            width="100%"
+                            height="100%"
                             url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                           />
                         </Card>

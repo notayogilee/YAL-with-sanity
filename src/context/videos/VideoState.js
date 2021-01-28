@@ -4,8 +4,7 @@ import VideoContext from './videoContext';
 import VideoReducer from './videoReducer';
 import {
   SET_LOADING,
-  LOAD_VIDEOS,
-  GET_SINGLE_VIDEO_DETAILS
+  LOAD_VIDEOS
 } from '../types';
 
 const VideoState = (props) => {

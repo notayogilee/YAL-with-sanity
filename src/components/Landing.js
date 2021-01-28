@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {
   Container,
-  Paper,
   Typography,
-  Zoom,
   Box,
   Slide,
   Hidden
@@ -116,7 +114,6 @@ const Landing = () => {
               </Slide>
             </Hidden>
 
-
             <Container
               style={{
                 height: '40vh',
@@ -125,7 +122,6 @@ const Landing = () => {
                 justifyContent: 'space-between'
               }} >
 
-              {/* <Zoom in={active} timeout={500}> */}
               <Link to="/video">
                 <Box boxShadow={5} className={classes.links}>
                   <Typography variant="h3" color="primary">
@@ -133,8 +129,6 @@ const Landing = () => {
                   </Typography>
                 </Box>
               </Link>
-              {/* </Zoom> */}
-              {/* <Zoom in={active} timeout={800}> */}
               <Link to="/blog">
                 <Box boxShadow={5} className={classes.links}>
                   <Typography variant="h3" color="primary">
@@ -142,8 +136,6 @@ const Landing = () => {
                     </Typography>
                 </Box>
               </Link>
-              {/* </Zoom> */}
-              {/* <Zoom in={active} timeout={1000}> */}
               <Link to="/recipe">
                 <Box boxShadow={5} className={classes.links}>
                   <Typography variant="h3" color="primary">
@@ -151,12 +143,9 @@ const Landing = () => {
                     </Typography>
                 </Box>
               </Link>
-              {/* </Zoom> */}
 
             </Container>
-
           </Container>
-
         </Container>
       </ThemeProvider>
     </div>

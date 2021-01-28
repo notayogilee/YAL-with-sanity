@@ -7,8 +7,7 @@ import {
   CardHeader,
   CardMedia,
   Typography,
-  Avatar,
-  Paper
+  Avatar
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,13 +28,13 @@ const BlogScreen = () => {
 
   const classes = useStyles();
 
-
   useEffect(() => {
     if (!blogPosts[0]) {
       console.log('request made')
       blogContext.loadBlogPosts();
     }
     return;
+    // eslint-disable-next-line
   }, []);
 
 

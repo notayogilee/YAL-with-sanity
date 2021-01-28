@@ -45,7 +45,6 @@ const About = () => {
             Claudia  réside dans le quartier St-Henri de Montréal avec son mari, sa sœur et  deux toutous gentils comme tout, Loky & Jasper. Ces grandes passions sont le yoga, la lecture, la cuisine et les aventures dans les friperies et les ventes de garage!
           </Typography>
         </Paper>
-
       </Container>
     </div>
   )

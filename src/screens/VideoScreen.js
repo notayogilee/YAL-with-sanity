@@ -40,7 +40,6 @@ const theme = createMuiTheme({
   }
 })
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
@@ -75,6 +74,7 @@ const VideoScreen = () => {
       // if videoContext is empty object, fetch videos from youtube api
       videoContext.loadVideos();
     }
+    // eslint-disable-next-line
   }, [])
 
   // get state from context

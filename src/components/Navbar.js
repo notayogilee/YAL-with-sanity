@@ -2,8 +2,6 @@ import React from 'react';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import {
   Button,
-  IconButton,
-  Container,
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';

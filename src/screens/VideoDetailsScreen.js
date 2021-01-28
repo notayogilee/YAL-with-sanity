@@ -10,15 +10,12 @@ import {
 //   ThemeProvider
 // } from '@material-ui/core/styles';
 
-
-
 const VideoDetailsScreen = () => {
   const videoContext = useContext(VideoContext);
   const videos = videoContext.videos;
 
   // get id from params
   const { id } = useParams();
-
 
   // get single video details from state
   const singleVideoDetails = (id) => {

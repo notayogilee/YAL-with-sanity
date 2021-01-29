@@ -81,7 +81,7 @@ const VideoScreen = () => {
   const { videos, loading } = videoContext;
 
   if (videos.items) {
-    console.log(videos.items)
+    console.log(videos)
   }
 
   return (
@@ -111,14 +111,13 @@ const VideoScreen = () => {
                 {videos.items && videos.items.map((video, index) => {
                   // api returns playlists as well. I just want videos with videoId
                   return (video.id.videoId &&
-                    <Slide direction='up' in={video} timeout={(index * 200) + 500}>
+                    <Slide direction='up' in={video} timeout={(index * 200) + 500} key={video.etag}>
                       <Grid
                         item
                         xs={10}
                         sm={7}
                         md={5}
                         lg={4}
-                        key={video.etag}
                         style={{ margin: 'auto', maxWidth: '560px' }}
                       >
                         <Card className={classes.media}>

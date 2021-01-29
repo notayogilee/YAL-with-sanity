@@ -8,8 +8,13 @@ import {
 } from '../types';
 
 const VideoState = (props) => {
+
+  // look in sessionStorage for videos to avoid unnecessary API calls - else set to empty object
+  const videosFromSessionStorage = sessionStorage.getItem('videos') ? JSON.parse(sessionStorage.getItem('videos')) : {}
+
+  // set results to initial state
   const initialState = {
-    videos: {},
+    videos: videosFromSessionStorage,
     loading: false
   }
 
@@ -25,6 +30,9 @@ const VideoState = (props) => {
       type: LOAD_VIDEOS,
       payload: res.data
     });
+
+    // set videos to session storage to avoid API calls on page refresh
+    sessionStorage.setItem('videos', JSON.stringify(res.data));
   };
 
   // Set Loading

@@ -8,16 +8,22 @@ import {
 } from '../types';
 
 const BlogState = (props) => {
+
+  // look in sessionStorage for blogs to avoid unnecessary API calls - else set to empty array
+  const blogsFromSessionStorage = sessionStorage.getItem('blogs') ? JSON.parse(sessionStorage.getItem('blogs')) : []
+
+  // set results to initial state
   const initialState = {
-    blogPosts: [],
+    blogPosts: blogsFromSessionStorage,
     loading: false
   }
 
   const [state, dispatch] = useReducer(BlogReducer, initialState);
 
+  // load all blogs from sanity API
   const loadBlogPosts = async () => {
     dispatch({ type: SET_LOADING });
-    console.log('before request')
+    console.log('blog request made')
     const res = await sanityClient.fetch(`*[_type == "post"]{
       _id,
       title,
@@ -39,6 +45,9 @@ const BlogState = (props) => {
       type: LOAD_BLOG_POSTS,
       payload: res
     })
+
+    // set blogs to session storage to avoid API calls on page refresh
+    sessionStorage.setItem('blogs', JSON.stringify(res));
   }
 
   return <BlogContext.Provider
@@ -50,7 +59,6 @@ const BlogState = (props) => {
   >
     {props.children}
   </BlogContext.Provider>
-
 }
 
 export default BlogState;

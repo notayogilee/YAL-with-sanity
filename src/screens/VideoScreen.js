@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
+import Header from '../components/Header';
+import Spinner from '../components/Spinner';
+import VideoModal from '../components/VideoModal';
 import {
   Container,
   Card,
   Grid,
-  CircularProgress,
-  Slide,
   Fade,
   Typography
 } from '@material-ui/core';
@@ -50,21 +51,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     padding: 0
   },
-  header: {
-    height: '20vh',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    background: 'linear-gradient(0.25turn,#5c7d79, #8aaca8, #baded9)',
-    color: "#f4f4f4",
-    overflowX: 'hidden',
-  },
-  spinner: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
-  },
   media: {
     height: '253.125px',
     width: '450px',
@@ -100,28 +86,14 @@ const VideoScreen = () => {
   return (
     <ThemeProvider theme={theme}>
       <Fade in={videos} timeout={300}>
-        <header className={classes.header}>
-          <Typography
-            variant="h1"
-          >
-            Videos
-          </Typography>
-        </header>
+        <Header title={"Videos"} />
 
       </Fade>
       <Container className={classes.root} disableGutters>
         {loading ? (
-          <div className={classes.spinner}>
-            <CircularProgress
-              color="primary"
-              size={140}
-              thickness={4.0}
-            />
-          </div>
+          <Spinner />
         ) : (
             <>
-
-
               <Container style={{ transform: 'translateY(10%)' }}>
                 <Grid container spacing={10}>
                   {videos.items && videos.items.map((video, index) => {
@@ -137,7 +109,6 @@ const VideoScreen = () => {
                           style={{ padding: '1rem 0', margin: 'auto' }}
                         >
                           <Card className={classes.media} >
-
                             <ReactPlayer
                               config={{
                                 youtube: {
@@ -154,9 +125,10 @@ const VideoScreen = () => {
                               url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                             />
                           </Card>
-                          <Link to={`/video/${video.id.videoId}`}>
+                          <VideoModal title={video.snippet.title} description={video.snippet.description} />
+                          {/* <Link to={`/video/${video.id.videoId}`}>
                             <Typography style={{ textAlign: 'center' }}>More Info</Typography>
-                          </Link>
+                          </Link> */}
                         </Grid>
                       </Fade>
                     )

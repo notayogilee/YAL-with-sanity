@@ -1,6 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import BlogContext from '../context/blog/blogContext';
-import { makeStyles } from '@material-ui/core/styles';
+import Header from '../components/Header';
+import Spinner from '../components/Spinner';
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider
+} from '@material-ui/core/styles';
 import {
   Container,
   Card,
@@ -9,6 +15,30 @@ import {
   Typography,
   Avatar
 } from '@material-ui/core';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#8aaca8',
+      light: '#baded9',
+      dark: '#5c7d79'
+    },
+  },
+  typography: {
+    h3: {
+      fontSize: '2.4rem',
+      '@media (max-width:600px)': {
+        fontSize: '1.5rem'
+      },
+    },
+    h1: {
+      fontSize: '5rem',
+      '@media (max-width:600px)': {
+        fontSize: '4rem'
+      }
+    }
+  }
+})
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogScreen = () => {
   const blogContext = useContext(BlogContext);
-  const blogPosts = blogContext.blogPosts;
+  const { blogPosts, loading } = blogContext;
 
   const classes = useStyles();
 
@@ -43,39 +73,43 @@ const BlogScreen = () => {
   }
 
   return (
-    <Container maxWidth="lg" className={classes.root}>
-      <Typography variant="h1" style={{ textAlign: 'center', padding: '1rem' }} >
-        Blogs
-      </Typography>
+    <ThemeProvider theme={theme}>
+      <Header title={"Blogs"} />
+      <Container maxWidth="lg" className={classes.root}>
+        {loading ? (
+          <Spinner />
+        ) : (
 
-      {blogPosts.length > 0 ? blogPosts.map((post) => {
-        return (
-          <Card key={post._id}>
-            <CardHeader
-              avatar={
-                <Avatar
-                  alt={post.name}
-                  src={post.authorImage}
-                />
-              }
-            />
-            <Typography variant="h3">
-              {post.title}
-            </Typography>
-            <CardMedia
-              className={classes.media}
-              image={post.mainImage.asset.url}
-              alt={post.title}
-            />
-          </Card>
-        )
-      }) : (
-          <Typography variant="h1">
-            Blogs are unavailable
-          </Typography>
-        )}
+            blogPosts.length > 0 ? blogPosts.map((post) => {
+              return (
+                <Card key={post._id}>
+                  <CardHeader
+                    avatar={
+                      <Avatar
+                        alt={post.name}
+                        src={post.authorImage}
+                      />
+                    }
+                  />
+                  <Typography variant="h3">
+                    {post.title}
+                  </Typography>
+                  <CardMedia
+                    className={classes.media}
+                    image={post.mainImage.asset.url}
+                    alt={post.title}
+                  />
+                </Card>
+              )
+            }) : (
+                <Typography variant="h1">
+                  Blogs are unavailable
+                </Typography>
+              )
 
-    </Container>
+          )}
+      </Container>
+    </ThemeProvider>
   )
 }
 

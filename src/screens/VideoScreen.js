@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     width: '100%',
     margin: 'auto',
-    padding: 0
+    padding: '5rem 0'
   },
   media: {
     height: '253.125px',
@@ -100,7 +100,7 @@ const VideoScreen = () => {
           <Spinner />
         ) : (
             <>
-              <Container style={{ transform: 'translateY(1.5%)', paddingBottom: '10rem' }}>
+              <Container>
                 <Grid container spacing={10}>
                   {videos.items && videos.items.map((video, index) => {
                     // api returns playlists as well. I just want videos with videoId
@@ -140,29 +140,29 @@ const VideoScreen = () => {
                             title={video.snippet.title}
                             videoId={video.id.videoId}
                           /> */}
-
-
                         </Grid>
                       </Fade>
-
                     )
                   })
                   }
-
                 </Grid>
               </Container>
+
               {videos.nextPageToken &&
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => loadMoreVideos(videos.nextPageToken)}
-                  style={{ width: '300px', margin: 'auto' }}
-                >
-                  <Typography>
-                    Load more videos
+                <Container style={{ display: 'flex', justifyContent: 'center', paddingTop: '4rem' }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => loadMoreVideos(videos.nextPageToken)}
+                    style={{ width: '300px' }}
+                  >
+                    <Typography>
+                      Load more videos
                   </Typography>
-                </Button>
+                  </Button>
+                </Container>
               }
+
             </>
           )
         }

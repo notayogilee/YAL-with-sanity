@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import VideoContext from '../context/videos/videoContext';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Modal,
@@ -23,21 +24,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VideoModal = ({ title, description }) => {
+const VideoModal = ({ title, videoId, description }) => {
+  const videoContext = useContext(VideoContext);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const fetchDetails = async (videoId) => {
+    await videoContext.getSingleVideoDetails(videoId);
+    const videoDetails = await videoContext.singleVideoDetails
+    console.log(videoDetails)
+    return videoDetails;
   };
 
+
+  // console.log(videoDescription)
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <button
+        type="button"
+        onClick={() => {
+          fetchDetails(videoId)
+        }}>
         More Info
     </button>
       <Modal
@@ -62,8 +73,16 @@ const VideoModal = ({ title, description }) => {
               display="block"
               noWrap={false}
             >
-              {description}
+              {title}
+
+
             </Typography>
+            {/* {singleVideoDetails.snippet &&
+              <Typography>
+                {singleVideoDetails.snippet.description}
+              </Typography>
+            } */}
+
           </Paper>
         </Fade>
       </Modal>

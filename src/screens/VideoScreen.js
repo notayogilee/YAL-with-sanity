@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
 import Header from '../components/Header';
@@ -10,6 +9,7 @@ import {
   Card,
   Grid,
   Fade,
+  Button,
   Typography
 } from '@material-ui/core';
 import {
@@ -44,6 +44,8 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
     position: 'relative',
     height: 'auto',
     minHeight: '100vh',
@@ -77,7 +79,11 @@ const VideoScreen = () => {
   }, [])
 
   // get state from context
-  const { videos, loading } = videoContext;
+  const { videos, loading, singleVideoDetails, loadMoreVideos } = videoContext;
+
+  if (singleVideoDetails.snippet) {
+    const videoDescription = singleVideoDetails.snippet.description;
+  }
 
   if (videos.items) {
     console.log(videos)
@@ -94,7 +100,7 @@ const VideoScreen = () => {
           <Spinner />
         ) : (
             <>
-              <Container style={{ transform: 'translateY(10%)' }}>
+              <Container style={{ transform: 'translateY(1.5%)', paddingBottom: '10rem' }}>
                 <Grid container spacing={10}>
                   {videos.items && videos.items.map((video, index) => {
                     // api returns playlists as well. I just want videos with videoId
@@ -114,7 +120,11 @@ const VideoScreen = () => {
                                 youtube: {
                                   playerVars: {
                                     modestbranding: 1,
-                                    autoplay: 1
+                                    autoplay: 1,
+                                    hl: 'fr-ca',
+                                    playsinline: 0,
+                                    rel: 0
+
                                   }
                                 }
                               }}
@@ -125,17 +135,34 @@ const VideoScreen = () => {
                               url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                             />
                           </Card>
-                          <VideoModal title={video.snippet.title} description={video.snippet.description} />
-                          {/* <Link to={`/video/${video.id.videoId}`}>
-                            <Typography style={{ textAlign: 'center' }}>More Info</Typography>
-                          </Link> */}
+
+                          {/* <VideoModal
+                            title={video.snippet.title}
+                            videoId={video.id.videoId}
+                          /> */}
+
+
                         </Grid>
                       </Fade>
+
                     )
                   })
                   }
+
                 </Grid>
               </Container>
+              {videos.nextPageToken &&
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => loadMoreVideos(videos.nextPageToken)}
+                  style={{ width: '300px', margin: 'auto' }}
+                >
+                  <Typography>
+                    Load more videos
+                  </Typography>
+                </Button>
+              }
             </>
           )
         }

@@ -1,6 +1,8 @@
+import { PersonalVideo } from '@material-ui/icons';
 import {
   SET_LOADING,
   GET_SINGLE_VIDEO_DETAILS,
+  LOAD_MORE_VIDEOS,
   LOAD_VIDEOS
 } from '../types';
 
@@ -12,10 +14,16 @@ export default (state, action) => {
         videos: action.payload,
         loading: false
       }
+    case LOAD_MORE_VIDEOS:
+      return {
+        ...state,
+        videos: action.payload,
+        loading: false
+      }
     case GET_SINGLE_VIDEO_DETAILS:
       return {
         ...state,
-        video: action.payload,
+        singleVideoDetails: action.payload,
         loading: false
       }
     case SET_LOADING:

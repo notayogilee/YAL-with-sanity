@@ -4,8 +4,11 @@ import VideoContext from './videoContext';
 import VideoReducer from './videoReducer';
 import {
   SET_LOADING,
-  LOAD_VIDEOS
+  LOAD_VIDEOS,
+  LOAD_MORE_VIDEOS,
+  GET_SINGLE_VIDEO_DETAILS
 } from '../types';
+import { PersonalVideo } from '@material-ui/icons';
 
 const VideoState = (props) => {
 
@@ -14,6 +17,7 @@ const VideoState = (props) => {
 
   // set results to initial state
   const initialState = {
+    singleVideoDetails: {},
     videos: videosFromSessionStorage,
     loading: false
   }
@@ -35,14 +39,53 @@ const VideoState = (props) => {
     sessionStorage.setItem('videos', JSON.stringify(res.data));
   };
 
+  // Load next page of videos
+  const loadMoreVideos = async (token) => {
+    setLoading();
+
+    const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?pageToken=${token}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=UC9u2sGj3VZpR0KAGCF_BvUw&part=snippet&maxResults=10`)
+
+    const { items, nextPageToken } = res.data;
+
+    // add new set of videos to state so not to lose preveous set of videos
+    state.videos.items = state.videos.items.concat(items);
+    // update nextPageToken in case there are more videos
+    state.videos.nextPageToken = nextPageToken
+
+    dispatch({
+      type: LOAD_MORE_VIDEOS,
+      payload: { ...state.videos }
+    })
+
+    // update session storage with new videos state
+    sessionStorage.setItem('videos', JSON.stringify(state.videos))
+  }
+
   // Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING })
+
+  // get full description of video
+  const getSingleVideoDetails = async (videoId) => {
+    setLoading();
+
+    console.log('DESCRIPTION REQUEST')
+
+    const res = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
+
+    dispatch({
+      type: GET_SINGLE_VIDEO_DETAILS,
+      payload: res.data.items[0]
+    })
+  }
 
   return <VideoContext.Provider
     value={{
       videos: state.videos,
+      singleVideoDetails: state.singleVideoDetails,
       loading: state.loading,
-      loadVideos
+      loadVideos,
+      getSingleVideoDetails,
+      loadMoreVideos
     }}
   >
     {props.children}

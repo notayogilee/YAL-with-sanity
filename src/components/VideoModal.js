@@ -24,17 +24,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VideoModal = ({ title, videoId, description }) => {
+let description = '';
+console.log(description)
+
+const VideoModal = ({ title, videoId }) => {
   const videoContext = useContext(VideoContext);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const fetchDetails = async (videoId) => {
-    await videoContext.getSingleVideoDetails(videoId);
-    const videoDetails = await videoContext.singleVideoDetails
-    console.log(videoDetails)
-    return videoDetails;
+    const videoMatch = checkStorageForVideoDetails(videoId)
+    if (videoMatch) {
+      console.log(videoMatch)
+      description = videoMatch.snippet.description;
+      setOpen(true);
+    } else {
+      const requestVideoDetails = await videoContext.getSingleVideoDetails(videoId);
+      const getVideoDetails = await videoContext.singleVideoDetails;
+
+      const videoDetails = checkStorageForVideoDetails(videoId);
+
+      // const selectedVideo = JSON.parse(videoDetails).filter((video) => videoId === video.id)
+      console.log(videoDetails)
+      description = videoDetails.snippet.description;
+      setOpen(true);
+    }
   };
+
+  const checkStorageForVideoDetails = (videoId) => {
+    // look in session storage before making api call
+    const videoDetails = sessionStorage.getItem('singleVideoDetails');
+    if (!videoDetails) {
+      return;
+    }
+    const videoMatch = JSON.parse(videoDetails).filter((video) => videoId === video.id);
+
+    if (videoMatch.length > 0) {
+      // console.log(videoMatch[0])
+      return videoMatch[0]
+    }
+  }
+
+  // const openModal = (videoDetails) => {
+  //   const selectedVideo = 
+  // }
 
 
   // console.log(videoDescription)
@@ -74,14 +107,10 @@ const VideoModal = ({ title, videoId, description }) => {
               noWrap={false}
             >
               {title}
-
-
             </Typography>
-            {/* {singleVideoDetails.snippet &&
-              <Typography>
-                {singleVideoDetails.snippet.description}
-              </Typography>
-            } */}
+            <Typography>
+              {description}
+            </Typography>
 
           </Paper>
         </Fade>

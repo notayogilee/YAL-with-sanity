@@ -8,16 +8,17 @@ import {
   LOAD_MORE_VIDEOS,
   GET_SINGLE_VIDEO_DETAILS
 } from '../types';
-import { PersonalVideo } from '@material-ui/icons';
 
 const VideoState = (props) => {
 
   // look in sessionStorage for videos to avoid unnecessary API calls - else set to empty object
   const videosFromSessionStorage = sessionStorage.getItem('videos') ? JSON.parse(sessionStorage.getItem('videos')) : {}
 
+  const singleVideoDetailsFromStorage = sessionStorage.getItem('singleVideoDetails') ? JSON.parse(sessionStorage.getItem('singleVideoDetails')) : []
+
   // set results to initial state
   const initialState = {
-    singleVideoDetails: {},
+    singleVideoDetails: singleVideoDetailsFromStorage,
     videos: videosFromSessionStorage,
     loading: false
   }
@@ -47,9 +48,9 @@ const VideoState = (props) => {
 
     const { items, nextPageToken } = res.data;
 
-    // add new set of videos to state so not to lose preveous set of videos
+    // add new set of videos to state so not to lose previous set of videos
     state.videos.items = state.videos.items.concat(items);
-    // update nextPageToken in case there are more videos
+    // update nextPageToken
     state.videos.nextPageToken = nextPageToken
 
     dispatch({
@@ -68,14 +69,18 @@ const VideoState = (props) => {
   const getSingleVideoDetails = async (videoId) => {
     setLoading();
 
-    console.log('DESCRIPTION REQUEST')
-
     const res = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
+
+    console.log('DESCRIPTION REQUEST', res.data.items[0])
+
+    state.singleVideoDetails = state.singleVideoDetails.concat(res.data.items[0])
 
     dispatch({
       type: GET_SINGLE_VIDEO_DETAILS,
-      payload: res.data.items[0]
+      payload: [...state.singleVideoDetails]
     })
+
+    sessionStorage.setItem('singleVideoDetails', JSON.stringify(state.singleVideoDetails))
   }
 
   return <VideoContext.Provider

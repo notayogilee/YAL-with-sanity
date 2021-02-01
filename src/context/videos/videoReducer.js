@@ -9,11 +9,6 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case LOAD_VIDEOS:
-      return {
-        ...state,
-        videos: action.payload,
-        loading: false
-      }
     case LOAD_MORE_VIDEOS:
       return {
         ...state,

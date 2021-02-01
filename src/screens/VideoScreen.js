@@ -79,11 +79,7 @@ const VideoScreen = () => {
   }, [])
 
   // get state from context
-  const { videos, loading, singleVideoDetails, loadMoreVideos } = videoContext;
-
-  if (singleVideoDetails.snippet) {
-    const videoDescription = singleVideoDetails.snippet.description;
-  }
+  const { videos, loading, loadMoreVideos } = videoContext;
 
   if (videos.items) {
     console.log(videos)
@@ -112,7 +108,7 @@ const VideoScreen = () => {
                           sm={12}
                           md={5}
                           lg={5}
-                          style={{ padding: '1rem 0', margin: 'auto' }}
+                          style={{ padding: '4rem 0', margin: 'auto' }}
                         >
                           <Card className={classes.media} >
                             <ReactPlayer
@@ -136,10 +132,10 @@ const VideoScreen = () => {
                             />
                           </Card>
 
-                          {/* <VideoModal
+                          <VideoModal
                             title={video.snippet.title}
                             videoId={video.id.videoId}
-                          /> */}
+                          />
                         </Grid>
                       </Fade>
                     )
@@ -149,7 +145,7 @@ const VideoScreen = () => {
               </Container>
 
               {videos.nextPageToken &&
-                <Container style={{ display: 'flex', justifyContent: 'center', paddingTop: '4rem' }}>
+                <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
                   <Button
                     variant="contained"
                     color="primary"

@@ -82,23 +82,21 @@ const VideoScreen = ({ history }) => {
   // get state from context
   const { videos, loading, loadMoreVideos, singleVideoDetails, getSingleVideoDetails } = videoContext;
 
-  if (videos.items) {
-    console.log(videos)
-  }
-
-
-
   const handleClick = async (videoId) => {
-    console.log('clicked');
+    // Check if ANY video details are in session storage
     if (singleVideoDetails.length > 0) {
+      // If videos exist, check for selected video
       const videoMatch = singleVideoDetails.filter((video) => videoId === video.id);
       if (videoMatch.length > 0) {
+        // If found go to video details page
         history.push(`/video/${videoId}`)
       } else {
+        // If not found in storage, make request to API
         await getSingleVideoDetails(videoId)
         history.push(`/video/${videoId}`)
       }
     } else {
+      // If video details in session storage is empty, make request to API
       await getSingleVideoDetails(videoId)
       history.push(`/video/${videoId}`)
     }
@@ -150,18 +148,7 @@ const VideoScreen = ({ history }) => {
                               url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                             />
                           </Card>
-
-                          {/* <VideoModal
-                            title={video.snippet.title}
-                            videoId={video.id.videoId}
-                          /> */}
-                          {/* <Link to={`video/${video.id.videoId}`}>
-                            More Info
-                          </Link> */}
-                          <Button onClick={() => {
-
-                            handleClick(video.id.videoId);
-                          }}>
+                          <Button onClick={() => handleClick(video.id.videoId)}>
                             More Info
                           </Button>
                         </Grid>
@@ -186,12 +173,11 @@ const VideoScreen = ({ history }) => {
                   </Button>
                 </Container>
               }
-
             </>
           )
         }
       </Container>
-    </ThemeProvider >
+    </ThemeProvider>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import VideoContext from '../context/videos/videoContext';
 import Spinner from '../components/Spinner';
@@ -50,55 +50,18 @@ const useStyles = makeStyles((theme) => ({
 
 const VideoDetailsScreen = () => {
   const videoContext = useContext(VideoContext);
-  // const [video, setVideo] = useState({});
+  const classes = useStyles(theme);
 
   const { loading, singleVideoDetails } = videoContext;
-
-  console.log(singleVideoDetails)
-  const classes = useStyles(theme);
 
   // get id from params
   const { id } = useParams();
 
+  // Find selected video from state
   const videoMatch = singleVideoDetails.filter((video) => id === video.id)
 
+  // Returns array with one match
   const video = videoMatch[0];
-
-  // const fetchDetails = async (id, singleVideoDetails) => {
-  //   // const getVideoDetailsFromState = await videoContext.singleVideoDetails;
-  //   if (singleVideoDetails.length > 0) {
-  //     const videoMatch = await singleVideoDetails.filter((video) => id === video.id);
-  //     if (videoMatch.length > 0) {
-  //       setVideo(videoMatch[0]);
-  //       return;
-  //     }
-  //   }
-  //   const requestVideoDetails = await videoContext.getSingleVideoDetails(id);
-  //   setVideo(requestVideoDetails);
-  // };
-
-  // fetchDetails(id, singleVideoDetails)
-
-  // const requestVideoDetails = async (id) => {
-  //   await getSingleVideoDetails(id);
-  //   const videoMatch = singleVideoDetails.filter((video) => id === video.id);
-  //   setVideo(videoMatch);
-  // }
-
-  // check state for video details
-  // if (singleVideoDetails.length > 0) {
-  //   const videoMatch = singleVideoDetails.filter((video) => id === video.id);
-  //   if (videoMatch.length > 0) {
-  //     console.log(videoMatch)
-  //     setVideo(videoMatch[0]);
-
-  // console.log(video.snippet)
-
-  // useEffect(() => {
-  //   if (!video.snippet) {
-  //     getSingleVideoDetails(id)
-  //   }
-  // }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -119,11 +82,9 @@ const VideoDetailsScreen = () => {
             </Paper>
           </>
         }
-
-
       </Container>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default VideoDetailsScreen
+export default VideoDetailsScreen;

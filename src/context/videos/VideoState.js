@@ -29,8 +29,10 @@ const VideoState = (props) => {
   const loadVideos = async () => {
     setLoading();
 
+    // API request to load all videos
     const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=UC9u2sGj3VZpR0KAGCF_BvUw&part=snippet&maxResults=10`)
 
+    // Dispatch results to reducer to be available to app
     dispatch({
       type: LOAD_VIDEOS,
       payload: res.data
@@ -69,17 +71,19 @@ const VideoState = (props) => {
   const getSingleVideoDetails = async (videoId) => {
     setLoading();
 
+    // make request to API
     const res = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`);
 
-    console.log('DESCRIPTION REQUEST', res.data.items[0])
-
+    // Update state for single video description
     state.singleVideoDetails = state.singleVideoDetails.concat(res.data.items)
 
+    // Dispatch to reducer
     dispatch({
       type: GET_SINGLE_VIDEO_DETAILS,
       payload: [...state.singleVideoDetails]
     })
 
+    // Set to session storage in case called again
     sessionStorage.setItem('singleVideoDetails', JSON.stringify(state.singleVideoDetails));
   }
 

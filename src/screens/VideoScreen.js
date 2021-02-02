@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
 import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
 import Header from '../components/Header';
@@ -64,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const VideoScreen = () => {
+const VideoScreen = ({ history }) => {
   const videoContext = useContext(VideoContext);
   const classes = useStyles();
 
@@ -79,10 +80,28 @@ const VideoScreen = () => {
   }, [])
 
   // get state from context
-  const { videos, loading, loadMoreVideos } = videoContext;
+  const { videos, loading, loadMoreVideos, singleVideoDetails, getSingleVideoDetails } = videoContext;
 
   if (videos.items) {
     console.log(videos)
+  }
+
+
+
+  const handleClick = async (videoId) => {
+    console.log('clicked');
+    if (singleVideoDetails.length > 0) {
+      const videoMatch = singleVideoDetails.filter((video) => videoId === video.id);
+      if (videoMatch.length > 0) {
+        history.push(`/video/${videoId}`)
+      } else {
+        await getSingleVideoDetails(videoId)
+        history.push(`/video/${videoId}`)
+      }
+    } else {
+      await getSingleVideoDetails(videoId)
+      history.push(`/video/${videoId}`)
+    }
   }
 
   return (
@@ -132,10 +151,19 @@ const VideoScreen = () => {
                             />
                           </Card>
 
-                          <VideoModal
+                          {/* <VideoModal
                             title={video.snippet.title}
                             videoId={video.id.videoId}
-                          />
+                          /> */}
+                          {/* <Link to={`video/${video.id.videoId}`}>
+                            More Info
+                          </Link> */}
+                          <Button onClick={() => {
+
+                            handleClick(video.id.videoId);
+                          }}>
+                            More Info
+                          </Button>
                         </Grid>
                       </Fade>
                     )
@@ -163,7 +191,7 @@ const VideoScreen = () => {
           )
         }
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 };
 

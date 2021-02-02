@@ -73,14 +73,14 @@ const VideoState = (props) => {
 
     console.log('DESCRIPTION REQUEST', res.data.items[0])
 
-    state.singleVideoDetails = state.singleVideoDetails.concat(res.data.items[0])
+    state.singleVideoDetails = state.singleVideoDetails.concat(res.data.items)
 
     dispatch({
       type: GET_SINGLE_VIDEO_DETAILS,
       payload: [...state.singleVideoDetails]
     })
 
-    sessionStorage.setItem('singleVideoDetails', JSON.stringify(state.singleVideoDetails))
+    sessionStorage.setItem('singleVideoDetails', JSON.stringify(state.singleVideoDetails));
   }
 
   return <VideoContext.Provider

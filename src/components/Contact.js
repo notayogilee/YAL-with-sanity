@@ -103,7 +103,7 @@ const Contact = () => {
           </Container>
           <Hidden smUp>
             <Container className={classes.social}>
-              <Box>
+              <Box style={{ display: 'flex', padding: '1rem 1rem', alignItems: 'center', justifyContent: 'center' }}>
                 <IconButton style={{ padding: '6px' }}>
                   <SocialIcon
                     url='https://www.facebook.com/pages/category/Yoga-Studio/Yogi-a-Lunette-252704625430721/'

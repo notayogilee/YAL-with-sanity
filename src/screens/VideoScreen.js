@@ -105,7 +105,7 @@ const VideoScreen = ({ history }) => {
   return (
     <ThemeProvider theme={theme}>
       <Fade in={videos} timeout={300}>
-        <Header title={"Videos"} />
+        <Header variant={'h1'} title={"Videos"} />
 
       </Fade>
       <Container className={classes.root} disableGutters>
@@ -125,7 +125,7 @@ const VideoScreen = ({ history }) => {
                           sm={12}
                           md={5}
                           lg={5}
-                          style={{ padding: '4rem 0', margin: 'auto' }}
+                          style={{ padding: '4rem 0', margin: 'auto', display: 'flex', flexDirection: 'column' }}
                         >
                           <Card className={classes.media} >
                             <ReactPlayer
@@ -148,7 +148,10 @@ const VideoScreen = ({ history }) => {
                               url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                             />
                           </Card>
-                          <Button onClick={() => handleClick(video.id.videoId)}>
+                          <Button
+                            onClick={() => handleClick(video.id.videoId)}
+                            style={{ width: '100px', margin: 'auto' }}
+                          >
                             More Info
                           </Button>
                         </Grid>

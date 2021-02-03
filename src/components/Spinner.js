@@ -26,7 +26,7 @@ const Spinner = () => {
       <CircularProgress
         color="primary"
         size={140}
-        thickness={4.0}
+        thickness={3.0}
       />
     </div>
   );

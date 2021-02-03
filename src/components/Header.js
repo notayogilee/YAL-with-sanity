@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Typography,
-  Container
+  Box
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -20,7 +20,7 @@ const theme = createMuiTheme({
     h1: {
       fontSize: '5rem',
       '@media (max-width:600px)': {
-        fontSize: '1rem'
+        fontSize: '0.5rem'
       }
     }
   }
@@ -29,26 +29,31 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
   header: {
     height: '20vh',
-    minHeight: '125px',
+    minHeight: '150px',
     display: 'flex',
     alignItems: 'center',
+    padding: '0 5rem',
     background: 'linear-gradient(0.25turn,#5c7d79, #8aaca8, #baded9)',
     color: "#f4f4f4",
     overflowX: 'hidden',
+    '@media (max-width: 600px)': {
+      padding: '1rem',
+      textAlign: 'center'
+    }
   },
 }))
 
-const Header = ({ title }) => {
+const Header = ({ title, variant }) => {
   const classes = useStyles();
   return (
     <header className={classes.header}>
-      <Container maxWidth="lg" style={{ padding: '0 5rem' }}>
+      <Box >
         <Typography
-          variant="h1"
+          variant={variant}
         >
           {title}
         </Typography>
-      </Container>
+      </Box>
     </header>
   );
 };

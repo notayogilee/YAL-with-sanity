@@ -4,7 +4,6 @@ import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
-import VideoModal from '../components/VideoModal';
 import {
   Container,
   Card,
@@ -106,7 +105,6 @@ const VideoScreen = ({ history }) => {
     <ThemeProvider theme={theme}>
       <Fade in={videos} timeout={300}>
         <Header variant={'h1'} title={"Videos"} />
-
       </Fade>
       <Container className={classes.root} disableGutters>
         {loading ? (

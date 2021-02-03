@@ -29,6 +29,7 @@ const BlogState = (props) => {
       title,
       slug,
       author,
+      publishedAt,
       mainImage{
         asset->{
           _id,

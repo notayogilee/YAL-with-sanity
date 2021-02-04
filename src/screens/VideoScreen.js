@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
 import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
 import Header from '../components/Header';

@@ -9,7 +9,6 @@ import {
   Card,
   CardHeader,
   CardMedia,
-  Paper,
   Typography,
   Fade,
 } from '@material-ui/core';

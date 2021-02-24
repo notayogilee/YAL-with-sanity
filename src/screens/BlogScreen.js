@@ -1,8 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import BlogContext from '../context/blog/blogContext';
-import sanityClient from '../client';
-import imageUrlBuilder from '@sanity/image-url';
-import moment from 'moment';
+// import sanityClient from '../client';
+// import imageUrlBuilder from '@sanity/image-url';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import {
@@ -15,15 +14,14 @@ import {
   Grid,
   ButtonBase,
   Typography,
-  Avatar
 } from '@material-ui/core';
 import theme from '../components/Theme';
 
-const builder = imageUrlBuilder(sanityClient);
+// const builder = imageUrlBuilder(sanityClient);
 
-function urlFor(source) {
-  return builder.image(source);
-}
+// function urlFor(source) {
+//   return builder.image(source);
+// }
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '100vw',
     margin: 'auto',
     overflowX: 'hidden',
-    padding: '2rem 0'
+    padding: '2rem 1rem'
   },
   image: {
     position: 'relative',

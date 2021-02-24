@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  content: {
+
   }
 }))
 
@@ -57,7 +60,7 @@ const VideoDetailsScreen = () => {
         }
         {video.snippet &&
           <>
-            <Card elevation={5} style={{ height: 'auto', width: '80vw' }}>
+            <Card style={{ height: 'auto', width: '80vw' }}>
               {video.snippet.tags &&
                 <CardHeader
                   title={`#${video.snippet.tags.join(',').replaceAll(',', ' #')}`}

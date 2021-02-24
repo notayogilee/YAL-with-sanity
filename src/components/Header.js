@@ -22,11 +22,29 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(0.25turn,#5c7d79, #8aaca8, #baded9)',
     color: "#f4f4f4",
     overflowX: 'hidden',
+    textAlign: 'center',
+    '@media (max-width: 1024px)': {
+      padding: '0 3rem',
+    },
     '@media (max-width: 600px)': {
-      padding: '1rem',
-      textAlign: 'center'
+      padding: '0 1rem',
     }
   },
+  nav: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    '@media (max-width: 600px)': {
+      flexDirection: 'column',
+      padding: '0 1rem',
+      textAlign: 'right'
+    }
+  },
+  navItem: {
+    marginRight: '1rem',
+    '@media (max-width: 600px)': {
+      margin: '0.25rem 0 '
+    }
+  }
 }))
 
 const Header = ({ title, variant }) => {
@@ -41,11 +59,11 @@ const Header = ({ title, variant }) => {
             {title}
           </Typography>
         </div>
-        <Container style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Container className={classes.nav}>
 
           <Link to="/">
             <Typography
-              style={{ marginRight: '1rem' }}
+              className={classes.navItem}
               color="secondary"
               component="div"
               variant="h3">
@@ -56,7 +74,7 @@ const Header = ({ title, variant }) => {
           {title.toLowerCase() !== 'blogs' &&
             <Link to="/blog">
               <Typography
-                style={{ marginRight: '1rem' }}
+                className={classes.navItem}
                 color="secondary"
                 component="div"
                 variant="h3">
@@ -68,7 +86,7 @@ const Header = ({ title, variant }) => {
           {title.toLowerCase() !== 'videos' &&
             <Link to="/video">
               <Typography
-                style={{ marginRight: '1rem' }}
+                className={classes.navItem}
                 color="secondary"
                 component="div"
                 variant="h3">

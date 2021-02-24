@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import {
   Container,
   Paper,
@@ -14,31 +14,7 @@ import {
   Hidden
 } from '@material-ui/core';
 import { SocialIcon } from 'react-social-icons';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#8aaca8',
-      light: '#baded9',
-      dark: '#5c7d79'
-    },
-    secondary: { main: '#f4f4f4' }
-  },
-  typography: {
-    h3: {
-      fontSize: '2.4rem',
-      '@media (max-width:600px)': {
-        fontSize: '1.3rem'
-      },
-    },
-    h1: {
-      fontSize: '5rem',
-      '@media (max-width:600px)': {
-        fontSize: '4rem'
-      }
-    }
-  }
-})
+import theme from './Theme'
 
 const useStyles = makeStyles((theme) => ({
   root: {

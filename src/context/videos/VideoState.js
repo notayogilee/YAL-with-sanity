@@ -30,7 +30,7 @@ const VideoState = (props) => {
     setLoading();
 
     // API request to load all videos
-    const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=UC9u2sGj3VZpR0KAGCF_BvUw&part=snippet&maxResults=10`)
+    const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=UC9u2sGj3VZpR0KAGCF_BvUw&part=snippet&maxResults=50`)
 
     // Dispatch results to reducer to be available to app
     dispatch({
@@ -46,7 +46,7 @@ const VideoState = (props) => {
   const loadMoreVideos = async (token) => {
     setLoading();
 
-    const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?pageToken=${token}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=UC9u2sGj3VZpR0KAGCF_BvUw&part=snippet&maxResults=10`)
+    const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?pageToken=${token}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}&channelId=UC9u2sGj3VZpR0KAGCF_BvUw&part=snippet&maxResults=50`)
 
     const { items, nextPageToken } = res.data;
 

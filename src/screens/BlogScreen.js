@@ -7,7 +7,6 @@ import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import {
   makeStyles,
-  createMuiTheme,
   ThemeProvider
 } from '@material-ui/core/styles';
 import {
@@ -18,36 +17,13 @@ import {
   Typography,
   Avatar
 } from '@material-ui/core';
+import theme from '../components/Theme';
 
 const builder = imageUrlBuilder(sanityClient);
 
 function urlFor(source) {
   return builder.image(source);
 }
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#8aaca8',
-      light: '#baded9',
-      dark: '#5c7d79'
-    },
-  },
-  typography: {
-    h3: {
-      fontSize: '2.4rem',
-      '@media (max-width:600px)': {
-        fontSize: '1.5rem'
-      },
-    },
-    h1: {
-      fontSize: '5rem',
-      '@media (max-width:600px)': {
-        fontSize: '4rem'
-      }
-    }
-  }
-})
 
 const useStyles = makeStyles((theme) => ({
   root: {

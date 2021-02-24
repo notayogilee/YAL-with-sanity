@@ -1,7 +1,5 @@
 import React, { useEffect, useContext } from 'react';
 import BlogContext from '../context/blog/blogContext';
-// import sanityClient from '../client';
-// import imageUrlBuilder from '@sanity/image-url';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import {
@@ -16,12 +14,6 @@ import {
   Typography,
 } from '@material-ui/core';
 import theme from '../components/Theme';
-
-// const builder = imageUrlBuilder(sanityClient);
-
-// function urlFor(source) {
-//   return builder.image(source);
-// }
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,13 +35,7 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 1,
       '& $imageBackdrop': {
         opacity: 0.15,
-      },
-      // '& $imageMarked': {
-      //   opacity: 0,
-      // },
-      // '& $imageTitle': {
-      //   border: '4px solid currentColor',
-      // },
+      }
     },
   },
   focusVisible: {},
@@ -88,18 +74,8 @@ const useStyles = makeStyles((theme) => ({
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
     width: '100%',
     textAlign: 'left',
-    // backgroundColor: '#fff'
     background: 'linear-gradient(0deg, rgba(10,10,10,0.9), rgba(10,10,10,0.2) )'
   },
-  // imageMarked: {
-  //   height: 3,
-  //   width: 18,
-  //   backgroundColor: theme.palette.common.white,
-  //   position: 'absolute',
-  //   bottom: -2,
-  //   left: 'calc(50% - 9px)',
-  //   transition: theme.transitions.create('opacity'),
-  // },
 }))
 
 const BlogScreen = () => {
@@ -133,7 +109,6 @@ const BlogScreen = () => {
                 container
                 spacing={10}
                 style={{
-                  // margin: 'auto',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -172,7 +147,6 @@ const BlogScreen = () => {
                             className={classes.imageTitle}
                           >
                             {post.title}
-                            {/* <span className={classes.imageMarked} /> */}
                           </Typography>
                         </span>
                       </ButtonBase>

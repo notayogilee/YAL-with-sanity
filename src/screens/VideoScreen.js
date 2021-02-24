@@ -32,9 +32,36 @@ const useStyles = makeStyles((theme) => ({
     height: '253.125px',
     width: '450px',
     margin: 'auto',
-    '@media (max-width: 600px)': {
+    '@media (max-width: 1024px)': {
       height: '168.75px',
+      width: '375px',
+    },
+    '@media (max-width: 600px)': {
+      height: '210.9px',
       width: '300px',
+    }
+  },
+  item: {
+    padding: '4rem 0',
+    margin: 'auto',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  button: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '50px',
+    width: '450px',
+    borderRadius: 0,
+    margin: 'auto',
+    '@media (max-width: 1024px)': {
+      width: '375px',
+      margin: 'auto'
+    },
+    '@media (max-width: 600px)': {
+      width: '300px',
+      margin: 'auto'
     }
   }
 }))
@@ -94,13 +121,13 @@ const VideoScreen = ({ history }) => {
                       <Fade in={videos} direction="up" key={video.etag} timeout={(index * 200) + 500}>
                         <Grid
                           item
+                          className={classes.item}
                           xs={12}
-                          sm={12}
+                          sm={8}
                           md={5}
                           lg={5}
-                          style={{ padding: '4rem 0', margin: 'auto', display: 'flex', flexDirection: 'column' }}
                         >
-                          <Card className={classes.media} >
+                          <Card square="true" className={classes.media} >
                             <ReactPlayer
                               config={{
                                 youtube: {
@@ -122,8 +149,11 @@ const VideoScreen = ({ history }) => {
                             />
                           </Card>
                           <Button
+                            // square="true"
                             onClick={() => handleClick(video.id.videoId)}
-                            style={{ width: '100px', margin: 'auto' }}
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
                           >
                             More Info
                           </Button>
@@ -136,12 +166,12 @@ const VideoScreen = ({ history }) => {
               </Container>
 
               {videos.nextPageToken &&
-                <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+                <Container className={classes.button}>
                   <Button
                     variant="contained"
                     color="primary"
                     onClick={() => loadMoreVideos(videos.nextPageToken)}
-                    style={{ width: '300px' }}
+                    style={{ marginTop: '6rem', padding: '1rem' }}
                   >
                     <Typography>
                       Load more videos

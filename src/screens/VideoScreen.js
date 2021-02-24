@@ -3,6 +3,7 @@ import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
+import TopButton from '../components/TopButton';
 import {
   Container,
   Card,
@@ -21,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    position: 'relative',
     height: 'auto',
     minHeight: '100vh',
     width: '100%',
@@ -108,13 +108,16 @@ const VideoScreen = ({ history }) => {
       <Fade in={videos} timeout={300}>
         <Header variant={'h1'} title={"Videos"} />
       </Fade>
+
       <Container className={classes.root} disableGutters>
         {loading ? (
           <Spinner />
         ) : (
             <>
               <Container>
-                <Grid container spacing={10}>
+
+                <Grid container spacing={10} style={{ position: 'relative' }}>
+                  <TopButton />
                   {videos.items && videos.items.map((video, index) => {
                     // api returns playlists as well. I just want videos with videoId
                     return (video.id.videoId &&

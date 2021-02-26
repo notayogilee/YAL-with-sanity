@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import VideoContext from '../context/videos/videoContext';
 import ReactPlayer from 'react-player/youtube';
 import Header from '../components/Header';
@@ -77,6 +77,7 @@ const VideoScreen = ({ history }) => {
       // if videoContext is empty object, fetch videos from youtube api
       videoContext.loadVideos();
     }
+
     // eslint-disable-next-line
   }, [])
 
@@ -103,11 +104,20 @@ const VideoScreen = ({ history }) => {
     }
   }
 
+  // To add and remove 'scroll to top' button
+  const [showTopButton, setShowTopButton] = useState(false)
+
+  window.addEventListener("scroll", (e) => {
+    if (window.scrollY === 0) {
+      setShowTopButton(false)
+    } else {
+      setShowTopButton(true)
+    }
+  })
+
   return (
     <ThemeProvider theme={theme}>
-      <Fade in={videos} timeout={300}>
-        <Header variant={'h1'} title={"Videos"} />
-      </Fade>
+      <Header variant={'h1'} title={"Videos"} />
 
       <Container className={classes.root} disableGutters>
         {loading ? (
@@ -115,9 +125,11 @@ const VideoScreen = ({ history }) => {
         ) : (
             <>
               <Container>
-
                 <Grid container spacing={10} style={{ position: 'relative' }}>
-                  <TopButton />
+                  {showTopButton &&
+                    <TopButton />
+                  }
+
                   {videos.items && videos.items.map((video, index) => {
                     // api returns playlists as well. I just want videos with videoId
                     return (video.id.videoId &&

@@ -44,14 +44,11 @@ const Landing = () => {
         maxWidth="lg"
         name="landing"
       >
-
         <Container style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '50%' }} >
           <Container>
-            <Slide in={active} timeout={1500}>
-              <Typography variant="h1" className="text" style={{ color: '#f4f4f4' }}>
-                YOGI A LUNETTE
+            <Typography variant="h1" className="text" style={{ color: '#f4f4f4' }}>
+              YOGI A LUNETTE
                 </Typography>
-            </Slide>
           </Container>
 
           {/* <Hidden smDown>
@@ -74,19 +71,18 @@ const Landing = () => {
 
         <Container style={{ display: 'flex', justifyContent: 'center', minHeight: '50%' }}>
           <Hidden xsDown>
-            <Slide in={active} direction="right" timeout={500}>
-              <Container>
-                <Box
-                  style={{
-                    height: '40vh',
-                    width: '100%'
-                  }}>
-                  <video style={{ objectFit: 'cover', height: '40vh', width: '100%' }} autoPlay muted loop>
-                    <source src={video} type="video/mp4" />
-                  </video>
-                </Box>
-              </Container>
-            </Slide>
+
+            <Container>
+              <Box
+                style={{
+                  height: '40vh',
+                  width: '100%'
+                }}>
+                <video style={{ objectFit: 'cover', height: '40vh', width: '100%' }} autoPlay muted loop>
+                  <source src={video} type="video/mp4" />
+                </video>
+              </Box>
+            </Container>
           </Hidden>
 
           <Container
